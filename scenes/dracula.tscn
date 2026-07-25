@@ -55,7 +55,7 @@ texture = ExtResource("6_iu7kl")
 
 [node name="Audio" type="Node" parent="." unique_id=1124189046]
 
-[node name="Hit" type="AudioStreamPlayer2D" parent="Audio" unique_id=97398670]
+[node name="Obstacle_Hit" type="AudioStreamPlayer2D" parent="Audio" unique_id=97398670]
 stream = ExtResource("3_42sh8")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1230462718]

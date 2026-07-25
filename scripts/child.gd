@@ -10,6 +10,7 @@ func _physics_process(delta: float) -> void:
 
 func on_hit():
 	$CollisionShape2D.disabled = true
+	$Child_Hit.play()
 	# TODO change sprite
 
 func get_blood_bonus() -> float:

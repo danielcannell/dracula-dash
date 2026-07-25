@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bewwff0n8vaxy" path="res://art/child_1.png" id="1_8ggnl"]
 [ext_resource type="Script" uid="uid://btn7d3i0lg2wh" path="res://scripts/child.gd" id="1_xoh2m"]
+[ext_resource type="AudioStream" uid="uid://bn0v4uwy8el63" path="res://audio/child_splat.wav" id="3_3ejsn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vc37v"]
 radius = 52.0
@@ -18,3 +19,6 @@ texture = ExtResource("1_8ggnl")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=624606137]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_vc37v")
+
+[node name="Child_Hit" type="AudioStreamPlayer2D" parent="." unique_id=1993141586]
+stream = ExtResource("3_3ejsn")
