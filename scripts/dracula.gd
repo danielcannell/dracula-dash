@@ -3,9 +3,18 @@ extends CharacterBody2D
 
 const TURN_TIME_SCALE_S = 0.1
 const SPEED = 1000
+const BLOOD_DRAIN_RATE = 10
 
 
 var angle: float = 0
+var blood_level: float = 100
+
+
+func _process(delta: float) -> void:
+	blood_level -= delta * BLOOD_DRAIN_RATE
+	if blood_level < 0:
+		blood_level = 0
+		print("TODO: Game over!")
 
 
 func _physics_process(delta: float) -> void:
