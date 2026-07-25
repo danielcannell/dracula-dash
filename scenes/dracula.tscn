@@ -3,16 +3,15 @@
 [ext_resource type="Script" uid="uid://uy3vauh8sdkx" path="res://scripts/dracula.gd" id="1_bwuyn"]
 [ext_resource type="Texture2D" uid="uid://6s74t6d6w7m2" path="res://art/ambulance.png" id="2_bwuyn"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bwuyn"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_0wfyh"]
 
 [node name="Dracula" type="CharacterBody2D" unique_id=199222267]
 script = ExtResource("1_bwuyn")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=166284994]
 texture_filter = 1
-position = Vector2(0, 10)
+position = Vector2(0, 5)
 texture = ExtResource("2_bwuyn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1269495273]
-position = Vector2(0, 10)
-shape = SubResource("CapsuleShape2D_bwuyn")
+shape = SubResource("CircleShape2D_0wfyh")
