@@ -1,12 +1,11 @@
 [gd_scene format=3 uid="uid://b06ix0lf0wpck"]
 
 [ext_resource type="Script" uid="uid://cbfad5hq8jytq" path="res://scenes/splat.gd" id="1_5x0i3"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8sh5f"]
-size = Vector2(64, 64)
+[ext_resource type="Texture2D" uid="uid://62tritqspxd" path="res://art/blood_splat.png" id="2_ydpu5"]
 
 [node name="Splat" type="Node2D" unique_id=2425604]
 script = ExtResource("1_5x0i3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1577698897]
-texture = SubResource("PlaceholderTexture2D_8sh5f")
+scale = Vector2(5, 5)
+texture = ExtResource("2_ydpu5")
