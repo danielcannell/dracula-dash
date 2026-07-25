@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://uy3vauh8sdkx" path="res://scripts/dracula.gd" id="1_bwuyn"]
 [ext_resource type="Texture2D" uid="uid://bh0fdo4lr27dj" path="res://art/ambulance.png" id="2_bwuyn"]
+[ext_resource type="Texture2D" uid="uid://hteb5q8hrl0p" path="res://art/coffin.png" id="6_iu7kl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0wfyh"]
 
@@ -15,3 +16,9 @@ texture = ExtResource("2_bwuyn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1269495273]
 shape = SubResource("CircleShape2D_0wfyh")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=129965279]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=264607544]
+position = Vector2(0, 5)
+texture = ExtResource("6_iu7kl")
