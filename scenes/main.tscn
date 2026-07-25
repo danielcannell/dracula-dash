@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://berrx4qdo4b6r"]
 
+[ext_resource type="Script" uid="uid://nxaaoatubu83" path="res://scenes/main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bttwaix4lnef6" path="res://scenes/dracula.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://cltc60dk0p1d7" path="res://scenes/road.tscn" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://bvmdp7pumjbuj" path="res://scenes/healthbar.tscn" id="4_jyhfs"]
 
-[node name="Main" type="Node2D" unique_id=1087361473]
+[node name="Main" type="Node" unique_id=197559345]
+script = ExtResource("1_0wfyh")
 
 [node name="Obstacle" type="Node2D" parent="." unique_id=250525190]
 
@@ -16,3 +19,22 @@ position = Vector2(0, 100)
 scale = Vector2(5, 5)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=930041559]
+
+[node name="UI" type="Control" parent="." unique_id=734612310]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -576.0
+offset_bottom = -324.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Healthbar" parent="UI" unique_id=1354114413 instance=ExtResource("4_jyhfs")]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 520.0
+offset_bottom = 70.0
