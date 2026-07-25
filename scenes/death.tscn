@@ -37,3 +37,5 @@ texture = ExtResource("2_tjai8")
 [node name="Count" type="Sprite2D" parent="ColorRect" unique_id=612865006]
 position = Vector2(631, 175)
 texture = ExtResource("3_q1r8t")
+
+[connection signal="pressed" from="ColorRect/Restart" to="." method="_on_restart"]

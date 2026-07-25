@@ -7,3 +7,8 @@ func _ready():
 
 func _show():
 	visible = true
+
+
+func _on_restart():
+	visible = false
+	get_tree().reload_current_scene()
