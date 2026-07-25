@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b3u2bjsc67og3" path="res://scenes/obstacle.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://b06ix0lf0wpck" path="res://scenes/splat.tscn" id="7_tipki"]
 [ext_resource type="Script" uid="uid://cyo43npdhvip7" path="res://scripts/virtual_joystick.gd" id="9_choun"]
+[ext_resource type="PackedScene" uid="uid://kuhf5tfosgyp" path="res://scenes/child.tscn" id="9_eb6dy"]
 [ext_resource type="Script" uid="uid://63fqho26pc44" path="res://scripts/score.gd" id="11_ya4ey"]
 
 [node name="Main" type="Node" unique_id=197559345]
@@ -34,6 +35,7 @@ scale = Vector2(5, 5)
 [node name="ObstacleSpawner" type="Node2D" parent="." unique_id=1843616111]
 script = ExtResource("3_sugp2")
 obstacle_scene = ExtResource("6_tefeu")
+child_scene = ExtResource("9_eb6dy")
 
 [node name="SpawnTimer" type="Timer" parent="ObstacleSpawner" unique_id=1934615549]
 

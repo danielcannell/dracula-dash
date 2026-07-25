@@ -1,12 +1,21 @@
 extends Node2D
 
 @export var obstacle_scene: PackedScene
+@export var child_scene: PackedScene
+
+@export var scroll_speed := 300.0
 @export var spawn_interval_min := 0.5
 @export var spawn_interval_max := 1.8
 
 const NUM_LANES := 4
 const BORDER_MARGIN := 175.0
 const SPAWN_Y := -1000.0
+
+@onready
+var spawn_table = [
+	[0.5, obstacle_scene],
+	[0.5, child_scene],
+]
 
 var lane_positions: Array[float] = []
 
@@ -20,7 +29,7 @@ func _ready():
 func _start_next_spawn_timer():
 	$SpawnTimer.wait_time = randf_range(spawn_interval_min, spawn_interval_max)
 	$SpawnTimer.start()
-	
+
 func set_paused(paused: bool):
 	$SpawnTimer.paused = paused
 
@@ -37,11 +46,21 @@ func _setup_lanes():
 		var lane_center = left_edge + BORDER_MARGIN + lane_width * i + lane_width / 2.0
 		lane_positions.append(lane_center)
 
+func _spawn():
+	var x = randf();
+	for row in spawn_table:
+		var frac = row[0]
+		var scene = row[1]
+
+		x -= frac
+		if x < 0:
+			return scene.instantiate()
+
 func _on_spawn_timer_timeout():
-	var obstacle = obstacle_scene.instantiate()
+	var obstacle = _spawn()
 	add_child(obstacle)
 
 	var lane_x = lane_positions[randi() % lane_positions.size()]
 	obstacle.global_position = Vector2(lane_x, SPAWN_Y)
-	
+
 	_start_next_spawn_timer()
