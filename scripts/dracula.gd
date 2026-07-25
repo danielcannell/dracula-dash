@@ -1,14 +1,19 @@
 extends CharacterBody2D
 
 
-var acceleration = Vector2.ZERO
+var angle: float = 0
 
 
 func _physics_process(delta: float) -> void:
+	var turn = 0
 	if Input.is_action_pressed("turn_left"):
-		print("x")
+		turn -= 1
 	if Input.is_action_pressed("turn_right"):
-		print("y")
+		turn += 1
+	
+	angle += 0.1 * (turn - angle)
+	rotation = angle
+	
+	velocity = 1000 * Vector2(sin(angle), 0)
 
-	velocity += acceleration * delta
 	move_and_slide()
