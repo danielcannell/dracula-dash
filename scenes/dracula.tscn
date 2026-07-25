@@ -82,11 +82,11 @@ position = Vector2(0, 9)
 script = ExtResource("3_42sh8")
 car = NodePath("../..")
 lean_stiffness = 100.0
-lean_damping = 10.0
+lean_damping = 15.0
 max_lean_angle = 0.3
 bounce_damping = 11.0
 bounce_strength = 0.01
-max_bounce_offset = 0.8
+max_bounce_offset = 0.7
 
 [node name="Bottom" type="Sprite2D" parent="CoffinContainer/Coffin" unique_id=264607544]
 texture = ExtResource("4_vcdwq")
@@ -95,12 +95,13 @@ texture = ExtResource("4_vcdwq")
 script = ExtResource("3_42sh8")
 car = NodePath("../../..")
 lean_stiffness = 130.0
-lean_damping = 11.0
+lean_damping = 14.0
 lean_strength = 0.08
 max_lean_angle = 0.25
-bounce_damping = 9.0
-bounce_strength = 0.03
-max_bounce_offset = 4.0
+bounce_stiffness = 80.0
+bounce_damping = 11.0
+bounce_strength = 0.04
+max_bounce_offset = 6.0
 
 [node name="Lid" type="Sprite2D" parent="CoffinContainer/Coffin/LidHinge" unique_id=1717016256]
 texture = ExtResource("5_m0uiu")
