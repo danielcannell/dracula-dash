@@ -35,6 +35,7 @@ cull_mode = 1
 polygon = PackedVector2Array(-4, -10, 4, -10, 8, -2, 8, 20, -8, 20, -8, -2)
 
 [node name="Dracula" type="CharacterBody2D" unique_id=199222267]
+motion_mode = 1
 script = ExtResource("1_bwuyn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1504607228]

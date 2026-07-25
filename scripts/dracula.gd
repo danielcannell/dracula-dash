@@ -18,6 +18,7 @@ var wheel_trails = []
 
 signal dead
 signal blood(health: float)
+signal hit(object: StaticBody2D)
 signal hit_bloody(object: StaticBody2D)
 signal stunned(stun: bool)
 
@@ -108,6 +109,7 @@ func _normal_movement(delta: float) -> void:
 		var collider = collision.get_collider()
 		if collider.is_in_group("obstacles"):
 			_on_hit(collision)
+			hit.emit(collider)
 			break
 		elif collider.is_in_group("children"):
 			hit_bloody.emit(collider)

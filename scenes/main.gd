@@ -15,6 +15,7 @@ func _on_dead() -> void:
 func _ready() -> void:
 	print("Joystick: ", Input.get_joy_name(0))
 	Globals.cur_forward_speed = 300.0
+	$Dracula.hit.connect(_on_hit)
 	$Dracula.hit_bloody.connect(_on_hit_bloody)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,7 +24,11 @@ func _process(delta: float) -> void:
 		score += delta
 		emit_signal("score_update", score)
 
+func _on_hit(object: StaticBody2D) -> void:
+	Input.start_joy_vibration(0, 0.0, 1.0, 0.5)
+
 func _on_hit_bloody(object: StaticBody2D) -> void:
+	Input.start_joy_vibration(0, 1.0, 0.0, 0.5)
 	$SplatSpawner.make_splat(object.global_position)
 	object.on_hit()
 	$Dracula.add_blood(object.get_blood_bonus())
