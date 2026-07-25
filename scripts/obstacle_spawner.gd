@@ -70,7 +70,7 @@ func _on_spawn_timer_timeout():
 		_spawn_single(scene)
 
 	_start_next_spawn_timer()
-	
+
 func _spawn_single(scene: PackedScene):
 	var obstacle = scene.instantiate()
 	var lane_x = lane_positions[randi() % lane_positions.size()]
