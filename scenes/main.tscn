@@ -39,4 +39,16 @@ offset_top = 20.0
 offset_right = 520.0
 offset_bottom = 70.0
 
+[node name="VirtualJoystick" type="VirtualJoystick" parent="." unique_id=565028087]
+visible = false
+offset_left = -15.0
+offset_top = 178.0
+offset_right = 25.0
+offset_bottom = 218.0
+joystick_size = 200.0
+action_left = &"turn_left"
+action_right = &"turn_right"
+action_up = &""
+action_down = &""
+
 [connection signal="blood" from="Dracula" to="UI/Healthbar" method="set_health"]
