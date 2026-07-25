@@ -10,7 +10,7 @@ const STUN_DURATION = 0.6
 const BOUNCE_STRENGTH = 400.0
 const BOUNCE_DECAY = 1000.0
 const Y_RECENTRE_SPEED = 300.0
-const HIT_DAMAGE = 20.0
+const HIT_DAMAGE = 10.0
 
 enum State { NORMAL, STUNNED }
 

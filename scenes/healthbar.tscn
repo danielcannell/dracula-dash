@@ -1,12 +1,15 @@
 [gd_scene format=3 uid="uid://bvmdp7pumjbuj"]
 
 [ext_resource type="Script" uid="uid://558s4pmjx1ra" path="res://scenes/healthbar.gd" id="1_8wl12"]
+[ext_resource type="Texture2D" uid="uid://bg6expm1vh220" path="res://art/health.png" id="2_vjxg4"]
 
 [node name="Healthbar" type="Control" unique_id=1354114413]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 500.0
-offset_bottom = 50.0
+offset_left = 51.0
+offset_top = 8.0
+offset_right = 304.0
+offset_bottom = 58.0
 script = ExtResource("1_8wl12")
 
 [node name="Background" type="ColorRect" parent="." unique_id=917050328]
@@ -26,3 +29,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1132101797]
+texture_filter = 1
+position = Vector2(105.00001, 25.000002)
+scale = Vector2(5, 5)
+texture = ExtResource("2_vjxg4")
