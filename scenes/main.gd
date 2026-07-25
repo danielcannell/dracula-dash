@@ -24,11 +24,13 @@ func _process(delta: float) -> void:
 		score += delta
 		emit_signal("score_update", score)
 
-func _on_hit(object: StaticBody2D) -> void:
-	Input.start_joy_vibration(0, 0.0, 1.0, 0.5)
+func _on_hit(_object: StaticBody2D) -> void:
+	if Globals.gamepad_active:
+		Input.start_joy_vibration(0, 0.0, 1.0, 0.5)
 
 func _on_hit_bloody(object: StaticBody2D) -> void:
-	Input.start_joy_vibration(0, 1.0, 0.0, 0.5)
+	if Globals.gamepad_active:
+		Input.start_joy_vibration(0, 1.0, 0.0, 0.5)
 	$SplatSpawner.make_splat(object.global_position)
 	object.on_hit()
 	$Dracula.add_blood(object.get_blood_bonus())
@@ -42,6 +44,7 @@ func _on_spawn_explode(pos: Vector2):
 	explosion.restart()
 
 func _input(event: InputEvent) -> void:
+	Globals.check_gamepad_active(event)
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_X:
 			$Dracula.dead.emit()
