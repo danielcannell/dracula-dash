@@ -11,6 +11,7 @@ offset_left = 194.0
 offset_top = 343.0
 offset_right = 290.0
 offset_bottom = 374.0
+focus_neighbor_bottom = NodePath("../Exit")
 text = "Start Game"
 
 [node name="Exit" type="Button" parent="." unique_id=580037529]
@@ -18,6 +19,7 @@ offset_left = 223.0
 offset_top = 399.0
 offset_right = 260.0
 offset_bottom = 430.0
+focus_neighbor_top = NodePath("../Start")
 text = "Exit"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1559885821]

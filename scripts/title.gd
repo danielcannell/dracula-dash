@@ -11,5 +11,6 @@ func _on_exit_pressed() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$Start.grab_focus.call_deferred()
 	$Start.pressed.connect(_on_start_pressed)
 	$Exit.pressed.connect(_on_exit_pressed)
