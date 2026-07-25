@@ -1,5 +1,7 @@
 extends Node
 
+const BASE_FORWARD_SPEED := 300.0
+
 var cur_forward_speed := 300.0
 var gamepad_active := false
 

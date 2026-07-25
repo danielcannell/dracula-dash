@@ -30,6 +30,7 @@ const BOUNCE_STRENGTH = 400.0
 const BOUNCE_DECAY = 1000.0
 const Y_RECENTRE_SPEED = 300.0
 const HIT_DAMAGE = 10.0
+const SMALL_BOUNCE_STRENGTH = 200.0
 
 enum State { NORMAL, STUNNED }
 
@@ -114,6 +115,10 @@ func _normal_movement(delta: float) -> void:
 		elif collider.is_in_group("children"):
 			hit_bloody.emit(collider)
 			break
+		elif collider.is_in_group("cyclists"):
+			hit_bloody.emit(collider)
+			_small_bounce(collision)
+			break
 
 func _stunned_movement(delta: float) -> void:
 	velocity = bounce_velocity
@@ -133,6 +138,12 @@ func _on_hit(collision: KinematicCollision2D) -> void:
 	await get_tree().create_timer(STUN_DURATION).timeout
 	stunned.emit(false)
 	state = State.NORMAL
+	
+func _small_bounce(collision: KinematicCollision2D) -> void:
+	velocity += collision.get_normal() * SMALL_BOUNCE_STRENGTH
+	var collider = collision.get_collider()
+	if collider.has_method("nudge"):
+		collider.nudge(-collision.get_normal(), BOUNCE_STRENGTH)
 
 func _extend_trail(line: Line2D, pos: Vector2) -> void:
 	if line.get_point_count() == 0 or pos.distance_to(line.points[-1]) > 4.0:

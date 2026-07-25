@@ -34,13 +34,19 @@ func _on_hit_bloody(object: StaticBody2D) -> void:
 	$SplatSpawner.make_splat(object.global_position)
 	object.on_hit()
 	$Dracula.add_blood(object.get_blood_bonus())
-	_on_spawn_explode(object.global_position - Vector2(0, 20))
 
-func _on_spawn_explode(pos: Vector2):
-	var explosion = $BloodExplode.duplicate()
+	var explosion_texture: Texture2D = null
+	if object.has_method("get_explosion_texture"):
+		explosion_texture = object.get_explosion_texture()
+
+	_on_spawn_explode(object.global_position - Vector2(0, 20), explosion_texture)
+
+func _on_spawn_explode(pos: Vector2, texture: Texture2D = null):
+	var explosion = $BloodExplode.duplicate(true)
 	add_child(explosion)
 	explosion.translate(pos)
-	explosion.finished.connect(explosion.queue_free)
+	if texture:
+		explosion.texture = texture
 	explosion.restart()
 
 func _input(event: InputEvent) -> void:

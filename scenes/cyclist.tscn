@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://pmefkwdb8566"]
+
+[ext_resource type="Script" uid="uid://x46r4ydou10i" path="res://scripts/cyclist.gd" id="1_0wkly"]
+[ext_resource type="Texture2D" uid="uid://c8hwom1sb4t8" path="res://art/garlic_man.png" id="2_5u3tr"]
+[ext_resource type="Texture2D" uid="uid://btlsmhta1qvr6" path="res://art/onion_man.png" id="3_8235r"]
+[ext_resource type="Texture2D" uid="uid://bojsp4xfyfvqx" path="res://art/onion.png" id="4_tlhfg"]
+[ext_resource type="Texture2D" uid="uid://c26lbplny4upq" path="res://art/garlic.png" id="5_ocjwb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrkvi"]
+size = Vector2(93, 260)
+
+[node name="Cyclist" type="StaticBody2D" unique_id=1057405724]
+scale = Vector2(0.9, 0.9)
+script = ExtResource("1_0wkly")
+garlic_texture = ExtResource("2_5u3tr")
+onion_texture = ExtResource("3_8235r")
+onion_particles = ExtResource("4_tlhfg")
+garlic_particles = ExtResource("5_ocjwb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1010810956]
+rotation = 3.1415927
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1624470443]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_hrkvi")

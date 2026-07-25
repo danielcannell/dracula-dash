@@ -2,9 +2,11 @@ extends Node2D
 
 @export var obstacle_scene: PackedScene
 @export var child_scene: PackedScene
+@export var cyclist_scene: PackedScene
 
 @export var spawn_interval_min := 300 * 0.5
 @export var spawn_interval_max := 300 * 1.8
+@export var peloton_chance := 0.5
 
 const NUM_LANES := 4
 const BORDER_MARGIN := 175.0
@@ -12,13 +14,15 @@ const SPAWN_Y := -1000.0
 
 @onready
 var spawn_table = [
-	[0.5, obstacle_scene],
-	[0.5, child_scene],
+	[0.3, obstacle_scene],
+	[0.3, child_scene],
+	[0.4, cyclist_scene],
 ]
 
 var lane_positions: Array[float] = []
-
 var next_spawn := 0.0
+var left_bound: float
+var right_bound: float
 
 func _ready():
 	_setup_lanes()
@@ -44,23 +48,48 @@ func _setup_lanes():
 	for i in range(NUM_LANES):
 		var lane_center = left_edge + BORDER_MARGIN + lane_width * i + lane_width / 2.0
 		lane_positions.append(lane_center)
+	left_bound = left_edge + BORDER_MARGIN - 50
+	right_bound = left_edge + BORDER_MARGIN + usable_width + 50
 
-func _spawn():
-	var x = randf();
+func _pick_scene() -> PackedScene:
+	var x = randf()
 	for row in spawn_table:
 		var frac = row[0]
 		var scene = row[1]
-
 		x -= frac
 		if x < 0:
-			return scene.instantiate()
+			return scene
+	return spawn_table[-1][1]
 
 func _on_spawn_timer_timeout():
-	var obstacle = _spawn()
+	var scene = _pick_scene()
 
-	var lane_x = lane_positions[randi() % lane_positions.size()]
-	obstacle.global_position = Vector2(lane_x, SPAWN_Y)
-
-	add_child(obstacle)
+	if scene == cyclist_scene and randf() < peloton_chance:
+		_spawn_peloton(scene)
+	else:
+		_spawn_single(scene)
 
 	_start_next_spawn_timer()
+	
+func _spawn_single(scene: PackedScene):
+	var obstacle = scene.instantiate()
+	var lane_x = lane_positions[randi() % lane_positions.size()]
+	obstacle.position = Vector2(lane_x, SPAWN_Y)
+	add_child(obstacle)
+
+func _spawn_peloton(scene: PackedScene):
+	var count = randi_range(2, 4)
+	var lane_x = lane_positions[randi() % lane_positions.size()]
+	var jitter_max = min(300.0, min(lane_x - left_bound, right_bound - lane_x))
+
+	for i in range(count):
+		var cyclist = scene.instantiate()
+
+		var stagger_y = SPAWN_Y - (i * 120.0)
+		var x_jitter = randf_range(-jitter_max, jitter_max)
+		var x = clamp(lane_x + x_jitter, left_bound, right_bound)
+
+		cyclist.position = Vector2(x, stagger_y)
+		add_child(cyclist)
+		if cyclist.has_method("set_swerve_phase"):
+			cyclist.set_swerve_phase(randf_range(0, TAU))
