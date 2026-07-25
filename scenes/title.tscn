@@ -1,23 +1,21 @@
 [gd_scene format=3 uid="uid://dj4eligatwfaw"]
 
-[ext_resource type="Script" uid="uid://cw17xw383kufw" path="res://scripts/exit_button.gd" id="1_4ignj"]
-[ext_resource type="Script" uid="uid://bjv5u0eevcna2" path="res://scripts/start_button.gd" id="1_wosw1"]
+[ext_resource type="Script" uid="uid://bujgov46mv1wk" path="res://scripts/title.gd" id="1_4ignj"]
 
 [node name="Title" type="CanvasLayer" unique_id=2026377788]
+script = ExtResource("1_4ignj")
 
 [node name="Start" type="Button" parent="." unique_id=1831149590]
 offset_top = 23.0
 offset_right = 96.0
 offset_bottom = 54.0
 text = "Start Game"
-script = ExtResource("1_wosw1")
 
 [node name="Exit" type="Button" parent="." unique_id=580037529]
 offset_top = 57.0
 offset_right = 37.0
 offset_bottom = 88.0
 text = "Exit"
-script = ExtResource("1_4ignj")
 
 [node name="Label" type="Label" parent="." unique_id=626457048]
 offset_right = 40.0
