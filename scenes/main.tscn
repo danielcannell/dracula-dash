@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bjl1id363frg5"]
+[gd_scene format=3 uid="uid://berrx4qdo4b6r"]
 
 [ext_resource type="PackedScene" uid="uid://bttwaix4lnef6" path="res://scenes/dracula.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://cltc60dk0p1d7" path="res://scenes/road.tscn" id="2_0wfyh"]
@@ -9,9 +9,9 @@
 
 [node name="Background" type="CanvasLayer" parent="." unique_id=1242201165]
 
+[node name="Road" parent="." unique_id=1145970626 instance=ExtResource("2_0wfyh")]
+
 [node name="Dracula" parent="." unique_id=199222267 instance=ExtResource("1_o5qli")]
 scale = Vector2(5, 5)
-
-[node name="Road" parent="." unique_id=1145970626 instance=ExtResource("2_0wfyh")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=930041559]
