@@ -11,7 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://b06ix0lf0wpck" path="res://scenes/splat.tscn" id="7_tipki"]
 [ext_resource type="Script" uid="uid://cyo43npdhvip7" path="res://scripts/virtual_joystick.gd" id="9_choun"]
 [ext_resource type="PackedScene" uid="uid://kuhf5tfosgyp" path="res://scenes/child.tscn" id="9_eb6dy"]
-[ext_resource type="Texture2D" uid="uid://5f11y4eqk15u" path="res://art/blooddrop.png" id="11_ya4ey"]
+[ext_resource type="Script" uid="uid://63fqho26pc44" path="res://scripts/score.gd" id="11_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://5f11y4eqk15u" path="res://art/blooddrop.png" id="13_trceg"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ky4ls"]
 particle_flag_disable_z = true
@@ -104,13 +105,15 @@ offset_right = -216.0
 offset_bottom = 40.0
 grow_horizontal = 0
 scale = Vector2(2, 2)
+text = "Score"
 horizontal_alignment = 2
+script = ExtResource("11_ya4ey")
 
 [node name="BloodExplode" type="GPUParticles2D" parent="." unique_id=46466987]
 position = Vector2(-26, 14)
 emitting = false
 amount = 250
-texture = ExtResource("11_ya4ey")
+texture = ExtResource("13_trceg")
 lifetime = 0.75
 one_shot = true
 explosiveness = 0.9
