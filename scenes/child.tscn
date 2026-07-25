@@ -11,6 +11,7 @@ height = 128.0
 script = ExtResource("1_xoh2m")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=909814168]
+texture_filter = 1
 scale = Vector2(8.125001, 8.125)
 texture = ExtResource("1_8ggnl")
 
