@@ -28,9 +28,15 @@ func _on_hit_bloody(object: StaticBody2D) -> void:
 	object.on_hit()
 	$Dracula.add_blood(object.get_blood_bonus())
 
+func _on_spawn_explode(pos: Vector2):
+	var explosion = $BloodExplode.duplicate()
+	add_child(explosion)
+	explosion.translate(pos)
+	explosion.restart()
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_X:
 			$Dracula.dead.emit()
 		if event.pressed and event.keycode == KEY_B:
-			$BloodExplode.restart()
+			_on_spawn_explode(get_viewport().get_mouse_position())

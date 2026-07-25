@@ -115,6 +115,7 @@ horizontal_alignment = 2
 script = ExtResource("11_ya4ey")
 
 [node name="BloodExplode" type="GPUParticles2D" parent="." unique_id=46466987]
+show_behind_parent = true
 position = Vector2(-26, 14)
 emitting = false
 amount = 250
