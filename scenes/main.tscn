@@ -97,8 +97,8 @@ grow_vertical = 0
 joystick_size = 400.0
 action_left = &"turn_left"
 action_right = &"turn_right"
-action_up = &""
-action_down = &""
+action_up = &"dodge_up"
+action_down = &"dodge_down"
 script = ExtResource("9_choun")
 
 [node name="Score" type="Label" parent="CanvasLayer/UI" unique_id=959533726]
