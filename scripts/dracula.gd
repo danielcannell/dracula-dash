@@ -79,10 +79,6 @@ func _on_hit(collision: KinematicCollision2D) -> void:
 	bounce_velocity = collision.get_normal() * BOUNCE_STRENGTH
 
 	blood_level -= HIT_DAMAGE
-	if blood_level < 0:
-		blood_level = 0
-		emit_signal("dead")
-	emit_signal("blood", blood_level)
 
 	_freeze_scroll(true)
 	await get_tree().create_timer(STUN_DURATION).timeout
