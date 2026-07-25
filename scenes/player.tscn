@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bttwaix4lnef6"]
+
+[ext_resource type="Texture2D" uid="uid://xob3oylyvh16" path="res://art/Car.png" id="1_3vyb7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8vuu"]
+size = Vector2(328, 648)
+
+[node name="Player" type="CharacterBody2D" unique_id=199222267]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=166284994]
+texture = ExtResource("1_3vyb7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1269495273]
+position = Vector2(2, -1)
+shape = SubResource("RectangleShape2D_u8vuu")
