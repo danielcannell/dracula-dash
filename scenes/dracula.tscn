@@ -1,9 +1,31 @@
 [gd_scene format=3 uid="uid://bttwaix4lnef6"]
 
 [ext_resource type="Script" uid="uid://uy3vauh8sdkx" path="res://scripts/dracula.gd" id="1_bwuyn"]
-[ext_resource type="Texture2D" uid="uid://bh0fdo4lr27dj" path="res://art/ambulance.png" id="2_bwuyn"]
+[ext_resource type="Texture2D" uid="uid://dvpb2nns634j6" path="res://art/ambulance-siren.png" id="2_42sh8"]
 [ext_resource type="AudioStream" uid="uid://8sbesukidbmk" path="res://audio/Hit1.wav" id="3_42sh8"]
 [ext_resource type="Texture2D" uid="uid://hteb5q8hrl0p" path="res://art/coffin.png" id="6_iu7kl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42sh8"]
+atlas = ExtResource("2_42sh8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2wbg"]
+atlas = ExtResource("2_42sh8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jjb4j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42sh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2wbg")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0wfyh"]
 
@@ -15,10 +37,11 @@ polygon = PackedVector2Array(-4, -10, 4, -10, 8, -2, 8, 20, -8, 20, -8, -2)
 [node name="Dracula" type="CharacterBody2D" unique_id=199222267]
 script = ExtResource("1_bwuyn")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=166284994]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1504607228]
 texture_filter = 1
 position = Vector2(0, 5)
-texture = ExtResource("2_bwuyn")
+sprite_frames = SubResource("SpriteFrames_jjb4j")
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1269495273]
 shape = SubResource("CircleShape2D_0wfyh")
