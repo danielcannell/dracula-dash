@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://berrx4qdo4b6r"]
+
+[ext_resource type="PackedScene" uid="uid://bttwaix4lnef6" path="res://scenes/dracula.tscn" id="1_o5qli"]
+
+[node name="Main" type="Node2D" unique_id=1087361473]
+
+[node name="Obstacle" type="Node2D" parent="." unique_id=250525190]
+
+[node name="Background" type="CanvasLayer" parent="." unique_id=1242201165]
+
+[node name="Dracula" parent="." unique_id=199222267 instance=ExtResource("1_o5qli")]

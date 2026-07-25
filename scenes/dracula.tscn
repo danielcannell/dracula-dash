@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://bttwaix4lnef6"]
 
-[ext_resource type="Texture2D" uid="uid://xob3oylyvh16" path="res://art/Car.png" id="1_3vyb7"]
-[ext_resource type="Script" uid="uid://uy3vauh8sdkx" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://uy3vauh8sdkx" path="res://scripts/dracula.gd" id="1_bwuyn"]
+[ext_resource type="Texture2D" uid="uid://xob3oylyvh16" path="res://art/Car.png" id="2_kixt8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8vuu"]
 size = Vector2(328, 648)
 
-[node name="Player" type="CharacterBody2D" unique_id=199222267]
-script = ExtResource("1_g2els")
+[node name="Dracula" type="CharacterBody2D" unique_id=199222267]
+script = ExtResource("1_bwuyn")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=166284994]
-texture = ExtResource("1_3vyb7")
+texture = ExtResource("2_kixt8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1269495273]
 position = Vector2(2, -1)
