@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Dracula Dash"
-run/main_scene="uid://berrx4qdo4b6r"
+run/main_scene="uid://dj4eligatwfaw"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
