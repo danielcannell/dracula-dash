@@ -51,8 +51,6 @@ script = ExtResource("3_sugp2")
 obstacle_scene = ExtResource("6_tefeu")
 child_scene = ExtResource("9_eb6dy")
 
-[node name="SpawnTimer" type="Timer" parent="ObstacleSpawner" unique_id=1934615549]
-
 [node name="Dracula" parent="." unique_id=199222267 instance=ExtResource("1_o5qli")]
 position = Vector2(0, 100)
 scale = Vector2(5, 5)

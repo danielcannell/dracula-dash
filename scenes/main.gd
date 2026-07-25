@@ -16,16 +16,12 @@ func _ready() -> void:
 	print("Joystick: ", Input.get_joy_name(0))
 	Globals.cur_forward_speed = 300.0
 	$Dracula.hit_bloody.connect(_on_hit_bloody)
-	$Dracula.stunned.connect(_on_stunned)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if not dead:
 		score += delta
 		emit_signal("score_update", score)
-
-func _on_stunned(stun: bool) -> void:
-	$ObstacleSpawner.set_paused(stun)
 
 func _on_hit_bloody(object: StaticBody2D) -> void:
 	$SplatSpawner.make_splat(object.global_position)
