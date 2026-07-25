@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 
 signal dead
+signal blood(health: float)
 
 
 const TURN_TIME_SCALE_S = 0.1
@@ -18,6 +19,7 @@ func _process(delta: float) -> void:
 	if blood_level < 0:
 		blood_level = 0
 		emit_signal("dead")
+	emit_signal("blood", blood_level)
 
 
 func _physics_process(delta: float) -> void:
