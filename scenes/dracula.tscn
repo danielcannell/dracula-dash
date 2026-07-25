@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" uid="uid://uy3vauh8sdkx" path="res://scripts/dracula.gd" id="1_bwuyn"]
 [ext_resource type="Texture2D" uid="uid://dvpb2nns634j6" path="res://art/ambulance-siren.png" id="2_42sh8"]
-[ext_resource type="AudioStream" uid="uid://8sbesukidbmk" path="res://audio/Hit1.wav" id="3_42sh8"]
-[ext_resource type="Texture2D" uid="uid://hteb5q8hrl0p" path="res://art/coffin.png" id="6_iu7kl"]
+[ext_resource type="Script" uid="uid://bixvsbipcb8ym" path="res://scenes/coffin.gd" id="3_42sh8"]
+[ext_resource type="Texture2D" uid="uid://d1ht124fc66r3" path="res://art/coffin_dracula.png" id="4_vcdwq"]
+[ext_resource type="Texture2D" uid="uid://s6f15w0vbsdc" path="res://art/coffin_lid.png" id="5_m0uiu"]
+[ext_resource type="AudioStream" uid="uid://8sbesukidbmk" path="res://audio/Hit1.wav" id="5_x2wbg"]
+[ext_resource type="Texture2D" uid="uid://bnmd3x8tjqsl3" path="res://art/coffin_ropes.png" id="6_iu7kl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_42sh8"]
 atlas = ExtResource("2_42sh8")
@@ -47,16 +50,15 @@ autoplay = "default"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1269495273]
 shape = SubResource("CircleShape2D_0wfyh")
 
-[node name="Node2D" type="Node2D" parent="." unique_id=129965279]
-
-[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=264607544]
+[node name="CoffinRopes" type="Sprite2D" parent="." unique_id=1857445595]
+z_index = 1
 position = Vector2(0, 5)
 texture = ExtResource("6_iu7kl")
 
 [node name="Audio" type="Node" parent="." unique_id=1124189046]
 
 [node name="Obstacle_Hit" type="AudioStreamPlayer2D" parent="Audio" unique_id=97398670]
-stream = ExtResource("3_42sh8")
+stream = ExtResource("5_x2wbg")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1230462718]
 occluder = SubResource("OccluderPolygon2D_mr007")
@@ -72,3 +74,33 @@ position = Vector2(-7, 15)
 
 [node name="WheelBR" type="Marker2D" parent="." unique_id=481189353]
 position = Vector2(7, 15)
+
+[node name="CoffinContainer" type="Node2D" parent="." unique_id=2143864690]
+position = Vector2(0, 9)
+
+[node name="Coffin" type="Node2D" parent="CoffinContainer" unique_id=129965279 node_paths=PackedStringArray("car")]
+script = ExtResource("3_42sh8")
+car = NodePath("../..")
+lean_stiffness = 100.0
+lean_damping = 10.0
+max_lean_angle = 0.3
+bounce_damping = 11.0
+bounce_strength = 0.01
+max_bounce_offset = 0.8
+
+[node name="Bottom" type="Sprite2D" parent="CoffinContainer/Coffin" unique_id=264607544]
+texture = ExtResource("4_vcdwq")
+
+[node name="LidHinge" type="Node2D" parent="CoffinContainer/Coffin" unique_id=615350514 node_paths=PackedStringArray("car")]
+script = ExtResource("3_42sh8")
+car = NodePath("../../..")
+lean_stiffness = 130.0
+lean_damping = 11.0
+lean_strength = 0.08
+max_lean_angle = 0.25
+bounce_damping = 9.0
+bounce_strength = 0.03
+max_bounce_offset = 4.0
+
+[node name="Lid" type="Sprite2D" parent="CoffinContainer/Coffin/LidHinge" unique_id=1717016256]
+texture = ExtResource("5_m0uiu")
