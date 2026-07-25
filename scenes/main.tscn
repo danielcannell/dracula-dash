@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://kuhf5tfosgyp" path="res://scenes/child.tscn" id="9_eb6dy"]
 [ext_resource type="Script" uid="uid://63fqho26pc44" path="res://scripts/score.gd" id="11_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://5f11y4eqk15u" path="res://art/blooddrop.png" id="13_trceg"]
+[ext_resource type="Script" uid="uid://db3qne3trfobw" path="res://scenes/audio.gd" id="15_jkv2x"]
+[ext_resource type="AudioStream" uid="uid://d3ijff0tu3x1w" path="res://audio/main_song.wav" id="16_jbj1t"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ky4ls"]
 resource_local_to_scene = true
@@ -122,6 +124,12 @@ one_shot = true
 explosiveness = 0.9
 collision_base_size = 1.5
 process_material = SubResource("ParticleProcessMaterial_ky4ls")
+
+[node name="Audio" type="Node" parent="." unique_id=1441369752]
+script = ExtResource("15_jkv2x")
+
+[node name="Main_Music" type="AudioStreamPlayer2D" parent="Audio" unique_id=1315839927]
+stream = ExtResource("16_jbj1t")
 
 [connection signal="score_update" from="." to="CanvasLayer/UI/Score" method="_on_score_update"]
 [connection signal="blood" from="Dracula" to="CanvasLayer/UI/Healthbar" method="set_health"]

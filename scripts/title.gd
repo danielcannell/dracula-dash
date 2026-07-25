@@ -36,3 +36,5 @@ func _input(event: InputEvent) -> void:
 func _ready() -> void:
 	$Menu/Buttons/Start.pressed.connect(_on_start_pressed)
 	$Menu/Buttons/Exit.pressed.connect(_on_exit_pressed)
+	
+	$Audio/Intro_Music.play()
