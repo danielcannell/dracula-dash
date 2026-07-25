@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://uy3vauh8sdkx" path="res://scripts/dracula.gd" id="1_bwuyn"]
 [ext_resource type="Texture2D" uid="uid://bh0fdo4lr27dj" path="res://art/ambulance.png" id="2_bwuyn"]
+[ext_resource type="AudioStream" uid="uid://8sbesukidbmk" path="res://audio/Hit1.wav" id="3_42sh8"]
 [ext_resource type="Texture2D" uid="uid://hteb5q8hrl0p" path="res://art/coffin.png" id="6_iu7kl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0wfyh"]
@@ -28,8 +29,14 @@ shape = SubResource("CircleShape2D_0wfyh")
 position = Vector2(0, 5)
 texture = ExtResource("6_iu7kl")
 
+[node name="Audio" type="Node" parent="." unique_id=1124189046]
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="Audio" unique_id=97398670]
+stream = ExtResource("3_42sh8")
+
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1230462718]
 occluder = SubResource("OccluderPolygon2D_mr007")
+
 [node name="WheelFL" type="Marker2D" parent="." unique_id=2000388257]
 position = Vector2(-7, -3)
 

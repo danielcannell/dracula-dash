@@ -118,6 +118,7 @@ func _stunned_movement(delta: float) -> void:
 	global_position.y = move_toward(global_position.y, 100, Y_RECENTRE_SPEED * delta)
 
 func _on_hit(collision: KinematicCollision2D) -> void:
+	$Audio/Hit.play()
 	state = State.STUNNED
 	bounce_velocity = collision.get_normal() * BOUNCE_STRENGTH
 
