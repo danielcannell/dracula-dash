@@ -83,11 +83,14 @@ func _normal_movement(delta: float) -> void:
 	var turn = Input.get_axis("turn_left", "turn_right")
 	var dodge = Input.get_axis("dodge_up", "dodge_down")
 
-	const kf = 0.9
-	var dodge_return_force = (position - base_pos).y * kf
+	var dodge_return_force = (position - base_pos).y
 	if abs(dodge_return_force) < 0.001:
 		dodge_return_force = 0.0
 	var dodge_force = dodge * 100
+
+	var boost_scale = 10 if dodge_return_force < 0 else 2
+
+	Globals.cur_forward_speed = 300.0 - dodge_return_force * boost_scale
 
 	# Exponential smoothing of direction angle
 	var alpha = 1 - exp(-delta / TURN_TIME_SCALE_S)
