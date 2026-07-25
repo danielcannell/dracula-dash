@@ -138,7 +138,7 @@ func _on_hit(collision: KinematicCollision2D) -> void:
 	await get_tree().create_timer(STUN_DURATION).timeout
 	stunned.emit(false)
 	state = State.NORMAL
-	
+
 func _small_bounce(collision: KinematicCollision2D) -> void:
 	velocity += collision.get_normal() * SMALL_BOUNCE_STRENGTH
 	var collider = collision.get_collider()
