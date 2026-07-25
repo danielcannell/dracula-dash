@@ -14,5 +14,5 @@ func update() -> void:
 	$Foreground.size.x = (self.health / 100.0) * $Background.size.x
 
 
-func set_health(health: float) -> void:
-	self.health = health
+func set_health(value: float) -> void:
+	self.health = value
