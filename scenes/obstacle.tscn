@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b3u2bjsc67og3"]
+
+[ext_resource type="Script" uid="uid://coi4kckbwf1wn" path="res://scripts/obstacle.gd" id="1_drdry"]
+[ext_resource type="Texture2D" uid="uid://dweg7m8vc3r6q" path="res://art/obstacle.png" id="2_cjuko"]
+
+[node name="Obstacle" type="Sprite2D" unique_id=1964968381]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_cjuko")
+script = ExtResource("1_drdry")

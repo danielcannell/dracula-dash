@@ -14,6 +14,7 @@ config/name="Dracula Dash"
 run/main_scene="uid://dj4eligatwfaw"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
+<<<<<<<Updatedupstreamrun/main_scene="uid://dj4eligatwfaw"
 
 [display]
 
