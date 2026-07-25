@@ -3,8 +3,6 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if DisplayServer.is_touchscreen_available():
-		$VirtualJoystick.visible = true
 	print("Joystick: ", Input.get_joy_name(0))
 
 

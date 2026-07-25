@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cgynn8mbyg10c" path="res://scenes/splat_spawner.gd" id="6_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://b3u2bjsc67og3" path="res://scenes/obstacle.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://b06ix0lf0wpck" path="res://scenes/splat.tscn" id="7_tipki"]
+[ext_resource type="Script" uid="uid://cyo43npdhvip7" path="res://scripts/virtual_joystick.gd" id="9_choun"]
 
 [node name="Main" type="Node" unique_id=197559345]
 script = ExtResource("1_0wfyh")
@@ -27,25 +28,6 @@ scale = Vector2(5, 5)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=930041559]
 
-[node name="VirtualJoystick" type="VirtualJoystick" parent="." unique_id=565028087]
-visible = false
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -660.0
-offset_top = -554.0
-offset_right = -620.0
-offset_bottom = -514.0
-grow_horizontal = 2
-grow_vertical = 0
-joystick_size = 200.0
-action_left = &"turn_left"
-action_right = &"turn_right"
-action_up = &""
-action_down = &""
-
 [node name="Death" parent="." unique_id=623993836 instance=ExtResource("5_tbgi4")]
 
 [node name="ObstacleSpawner" type="Node2D" parent="." unique_id=1843616111]
@@ -54,24 +36,43 @@ obstacle_scene = ExtResource("6_tefeu")
 
 [node name="SpawnTimer" type="Timer" parent="ObstacleSpawner" unique_id=1934615549]
 
-[node name="UI" type="Control" parent="." unique_id=734612310]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1327321930]
+
+[node name="UI" type="Control" parent="CanvasLayer" unique_id=734612310]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -576.0
-offset_top = -324.0
-offset_right = -576.0
-offset_bottom = -324.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="Healthbar" parent="UI" unique_id=1354114413 instance=ExtResource("4_jyhfs")]
-layout_mode = 0
+[node name="Healthbar" parent="CanvasLayer/UI" unique_id=1354114413 instance=ExtResource("4_jyhfs")]
+layout_mode = 1
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 520.0
 offset_bottom = 70.0
 
-[connection signal="blood" from="Dracula" to="UI/Healthbar" method="set_health"]
+[node name="VirtualJoystick" type="VirtualJoystick" parent="CanvasLayer/UI" unique_id=565028087]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_top = -161.0
+offset_right = 21.0
+offset_bottom = -121.0
+grow_horizontal = 2
+grow_vertical = 0
+joystick_size = 200.0
+action_left = &"turn_left"
+action_right = &"turn_right"
+action_up = &""
+action_down = &""
+script = ExtResource("9_choun")
+
+[connection signal="blood" from="Dracula" to="CanvasLayer/UI/Healthbar" method="set_health"]
 [connection signal="dead" from="Dracula" to="Death" method="_on_death"]
