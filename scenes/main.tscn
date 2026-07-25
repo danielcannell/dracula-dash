@@ -5,8 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://cltc60dk0p1d7" path="res://scenes/road.tscn" id="2_0wfyh"]
 [ext_resource type="Script" uid="uid://chqdm3clajktx" path="res://scripts/obstacle_spawner.gd" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://bvmdp7pumjbuj" path="res://scenes/healthbar.tscn" id="4_jyhfs"]
+[ext_resource type="Script" uid="uid://cgynn8mbyg10c" path="res://scenes/splat_spawner.gd" id="6_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://b3u2bjsc67og3" path="res://scenes/obstacle.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://r0t5e0ujtalw" path="res://scenes/death.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://b06ix0lf0wpck" path="res://scenes/splat.tscn" id="7_tipki"]
 
 [node name="Main" type="Node" unique_id=197559345]
 script = ExtResource("1_0wfyh")
@@ -20,6 +22,10 @@ script = ExtResource("3_sugp2")
 obstacle_scene = ExtResource("6_tefeu")
 
 [node name="SpawnTimer" type="Timer" parent="ObstacleSpawner" unique_id=1934615549]
+
+[node name="SplatSpawner" type="Node2D" parent="." unique_id=785628909]
+script = ExtResource("6_o6xl0")
+splat_scene = ExtResource("7_tipki")
 
 [node name="Dracula" parent="." unique_id=199222267 instance=ExtResource("1_o5qli")]
 position = Vector2(0, 100)

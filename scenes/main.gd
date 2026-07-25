@@ -10,6 +10,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_accept"):
+		$SplatSpawner.splat($Dracula.global_position)
 	pass
 
 func _input(event: InputEvent) -> void:
