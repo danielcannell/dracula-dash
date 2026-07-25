@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://chqdm3clajktx" path="res://scripts/obstacle_spawner.gd" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://bvmdp7pumjbuj" path="res://scenes/healthbar.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://b3u2bjsc67og3" path="res://scenes/obstacle.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://r0t5e0ujtalw" path="res://scenes/death.tscn" id="5_tbgi4"]
 
 [node name="Main" type="Node" unique_id=197559345]
 script = ExtResource("1_0wfyh")
@@ -62,5 +63,7 @@ action_left = &"turn_left"
 action_right = &"turn_right"
 action_up = &""
 action_down = &""
+[node name="Death" parent="." unique_id=623993836 instance=ExtResource("5_tbgi4")]
 
 [connection signal="blood" from="Dracula" to="UI/Healthbar" method="set_health"]
+[connection signal="dead" from="Dracula" to="Death" method="_show"]

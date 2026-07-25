@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://r0t5e0ujtalw"]
+
+[ext_resource type="Script" uid="uid://nc44vvud8oi2" path="res://scripts/death.gd" id="1_0hhgj"]
+
+[node name="Node2D" type="CanvasLayer" unique_id=623993836]
+visible = false
+script = ExtResource("1_0hhgj")
+
+[node name="Label" type="Label" parent="." unique_id=778727568]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Count"
+
+[node name="Label2" type="Label" parent="." unique_id=925616108]
+offset_left = -1.0
+offset_top = 20.0
+offset_right = 59.0
+offset_bottom = 43.0
+text = "Down"
+
+[node name="Button" type="Button" parent="." unique_id=1463549988]
+offset_left = -1.0
+offset_top = 46.0
+offset_right = 64.0
+offset_bottom = 77.0
+text = "Restart"
