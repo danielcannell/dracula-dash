@@ -30,3 +30,14 @@ texture = ExtResource("6_iu7kl")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1230462718]
 occluder = SubResource("OccluderPolygon2D_mr007")
+[node name="WheelFL" type="Marker2D" parent="." unique_id=2000388257]
+position = Vector2(-7, -3)
+
+[node name="WheelFR" type="Marker2D" parent="." unique_id=708925968]
+position = Vector2(7, -3)
+
+[node name="WheelBL" type="Marker2D" parent="." unique_id=1751227455]
+position = Vector2(-7, 15)
+
+[node name="WheelBR" type="Marker2D" parent="." unique_id=481189353]
+position = Vector2(7, 15)
