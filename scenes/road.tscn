@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cltc60dk0p1d7"]
+
+[ext_resource type="Texture2D" uid="uid://tpn7u2y665qp" path="res://art/Road.png" id="1_mv8x7"]
+
+[node name="Road" type="Node2D" unique_id=1145970626]
+
+[node name="RoadParallax" type="Parallax2D" parent="." unique_id=108040734]
+repeat_size = Vector2(0, 1000)
+autoscroll = Vector2(0, 300)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="RoadParallax" unique_id=395569597]
+texture = ExtResource("1_mv8x7")
