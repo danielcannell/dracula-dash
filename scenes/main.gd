@@ -14,6 +14,7 @@ func _on_dead() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("Joystick: ", Input.get_joy_name(0))
+	Globals.cur_forward_speed = 300.0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
