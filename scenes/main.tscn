@@ -74,4 +74,4 @@ action_down = &""
 [node name="Death" parent="." unique_id=623993836 instance=ExtResource("5_tbgi4")]
 
 [connection signal="blood" from="Dracula" to="UI/Healthbar" method="set_health"]
-[connection signal="dead" from="Dracula" to="Death" method="_show"]
+[connection signal="dead" from="Dracula" to="Death" method="_on_death"]
