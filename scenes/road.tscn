@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cltc60dk0p1d7"]
 
 [ext_resource type="Texture2D" uid="uid://dgwsxalvb5t7h" path="res://art/road.png" id="1_mv8x7"]
+[ext_resource type="Script" uid="uid://bx7d12epqj2wv" path="res://scripts/road_parallax.gd" id="1_my2y2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_arcuu"]
 size = Vector2(267, 622)
@@ -11,6 +12,7 @@ size = Vector2(267, 622)
 repeat_size = Vector2(0, 2560)
 autoscroll = Vector2(0, 300)
 repeat_times = 3
+script = ExtResource("1_my2y2")
 
 [node name="Sprite2D" type="Sprite2D" parent="RoadParallax" unique_id=395569597]
 texture_filter = 1
