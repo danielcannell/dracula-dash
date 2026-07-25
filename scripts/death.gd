@@ -6,10 +6,12 @@ func _ready():
 	visible = false
 
 func _on_death():
-	cur_scale = 0
-	visible = true
+	if not visible:
+		cur_scale = 0
+		visible = true
 
 func _process(delta):
+	print(cur_scale)
 	if cur_scale < 3:
 		var count_scale = min(cur_scale, 1)
 		var down_scale = min(max(0, cur_scale-1.5), 1)
