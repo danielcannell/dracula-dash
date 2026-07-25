@@ -1,23 +1,25 @@
 [gd_scene format=3 uid="uid://dj4eligatwfaw"]
 
 [ext_resource type="Script" uid="uid://bujgov46mv1wk" path="res://scripts/title.gd" id="1_4ignj"]
+[ext_resource type="Texture2D" uid="uid://cfokiqb27f73t" path="res://art/title.png" id="2_wosw1"]
 
 [node name="Title" type="CanvasLayer" unique_id=2026377788]
 script = ExtResource("1_4ignj")
 
 [node name="Start" type="Button" parent="." unique_id=1831149590]
-offset_top = 23.0
-offset_right = 96.0
-offset_bottom = 54.0
+offset_left = 194.0
+offset_top = 343.0
+offset_right = 290.0
+offset_bottom = 374.0
 text = "Start Game"
 
 [node name="Exit" type="Button" parent="." unique_id=580037529]
-offset_top = 57.0
-offset_right = 37.0
-offset_bottom = 88.0
+offset_left = 223.0
+offset_top = 399.0
+offset_right = 260.0
+offset_bottom = 430.0
 text = "Exit"
 
-[node name="Label" type="Label" parent="." unique_id=626457048]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Dracula Dash"
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1559885821]
+position = Vector2(260, 166)
+texture = ExtResource("2_wosw1")
