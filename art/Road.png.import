@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dgwsxalvb5t7h"
-path="res://.godot/imported/road.png-5871c42b157e703194fb5971374a10a0.ctex"
+path="res://.godot/imported/Road.png-1dcfd197958b30d3110c45961c4307c5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/road.png"
-dest_files=["res://.godot/imported/road.png-5871c42b157e703194fb5971374a10a0.ctex"]
+source_file="res://art/Road.png"
+dest_files=["res://.godot/imported/Road.png-1dcfd197958b30d3110c45961c4307c5.ctex"]
 
 [params]
 
