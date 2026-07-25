@@ -19,6 +19,7 @@ var wheel_trails = []
 signal dead
 signal blood(health: float)
 signal hit_bloody(object: StaticBody2D)
+signal stunned(stun: bool)
 
 const TURN_TIME_SCALE_S = 0.1
 const SPEED = 1000
@@ -36,8 +37,6 @@ var blood_level: float = 100
 var state := State.NORMAL
 var bounce_velocity := Vector2.ZERO
 var base_pos: Vector2
-
-@onready var spawner = get_node("/root/Main/ObstacleSpawner")
 
 func _ready() -> void:
 	add_to_group("player")
@@ -127,15 +126,11 @@ func _on_hit(collision: KinematicCollision2D) -> void:
 
 	blood_level -= HIT_DAMAGE
 
-	_freeze_scroll(true)
+	Globals.cur_forward_speed = 0.0
+	stunned.emit(true)
 	await get_tree().create_timer(STUN_DURATION).timeout
-	_freeze_scroll(false)
+	stunned.emit(false)
 	state = State.NORMAL
-
-func _freeze_scroll(frozen: bool) -> void:
-	spawner.set_paused(frozen)
-	Globals.cur_forward_speed = 0.0 if frozen else 300.0
-
 
 func _extend_trail(line: Line2D, pos: Vector2) -> void:
 	if line.get_point_count() == 0 or pos.distance_to(line.points[-1]) > 4.0:
