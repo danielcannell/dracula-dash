@@ -18,10 +18,11 @@ var wheel_trails = []
 
 signal dead
 signal blood(health: float)
+signal hit_bloody(object: StaticBody2D)
 
 const TURN_TIME_SCALE_S = 0.1
 const SPEED = 1000
-const BLOOD_DRAIN_RATE = 10
+const BLOOD_DRAIN_RATE = 5
 const STUN_DURATION = 0.6
 const BOUNCE_STRENGTH = 400.0
 const BOUNCE_DECAY = 1000.0
@@ -48,14 +49,17 @@ func _ready() -> void:
 		wheel_trails.append(scene)
 		trail_container.add_child(scene)
 
-
-func _process(delta: float) -> void:
-	# blood_level -= delta * BLOOD_DRAIN_RATE
+func add_blood(amount: float) -> void:
+	blood_level += amount
+	if blood_level > 100.0:
+		blood_level = 100.0
 	if blood_level <= 0:
 		blood_level = 0
 		emit_signal("dead")
 	emit_signal("blood", blood_level)
 
+func _process(delta: float) -> void:
+	add_blood(-delta * BLOOD_DRAIN_RATE)
 
 func _physics_process(delta: float) -> void:
 	match state:
@@ -103,7 +107,9 @@ func _normal_movement(delta: float) -> void:
 		if collider.is_in_group("obstacles"):
 			_on_hit(collision)
 			break
-
+		elif collider.is_in_group("children"):
+			hit_bloody.emit(collider)
+			break
 
 func _stunned_movement(delta: float) -> void:
 	velocity = bounce_velocity
