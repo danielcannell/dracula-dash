@@ -25,6 +25,9 @@ initial_velocity_max = 700.0
 gravity = Vector3(0, 0, 0)
 scale_min = 2.0
 scale_max = 5.0
+collision_mode = 1
+collision_friction = 0.2
+collision_bounce = 0.4
 
 [node name="Main" type="Node" unique_id=197559345]
 script = ExtResource("1_0wfyh")
