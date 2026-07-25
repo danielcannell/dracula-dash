@@ -15,7 +15,7 @@ func _process(delta):
 		var down_scale = min(max(0, cur_scale-1.5), 1)
 		$ColorRect/Count.scale = Vector2(count_scale, count_scale)
 		$ColorRect/Down.scale = Vector2(down_scale, down_scale)
-		cur_scale += 0.025
+		cur_scale += 1.0 * delta
 
 func _on_restart():
 	visible = false
