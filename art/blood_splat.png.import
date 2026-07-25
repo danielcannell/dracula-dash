@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi7vnwo44wckf"
-path="res://.godot/imported/obstacle.png-ca6bdde4394f0b4f8564ea25601eb50f.ctex"
+uid="uid://62tritqspxd"
+path="res://.godot/imported/blood_splat.png-848f92e9a459dab13df9a63bde1ba8be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/obstacle.png"
-dest_files=["res://.godot/imported/obstacle.png-ca6bdde4394f0b4f8564ea25601eb50f.ctex"]
+source_file="res://art/blood_splat.png"
+dest_files=["res://.godot/imported/blood_splat.png-848f92e9a459dab13df9a63bde1ba8be.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi7vnwo44wckf"
-path="res://.godot/imported/obstacle.png-ca6bdde4394f0b4f8564ea25601eb50f.ctex"
+uid="uid://dvpb2nns634j6"
+path="res://.godot/imported/ambulance-siren.png-7c7a0289562e03b3a13981a9227dfb46.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/obstacle.png"
-dest_files=["res://.godot/imported/obstacle.png-ca6bdde4394f0b4f8564ea25601eb50f.ctex"]
+source_file="res://art/ambulance-siren.png"
+dest_files=["res://.godot/imported/ambulance-siren.png-7c7a0289562e03b3a13981a9227dfb46.ctex"]
 
 [params]
 
