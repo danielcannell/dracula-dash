@@ -4,7 +4,6 @@ extends StaticBody2D
 @export var onion_texture: Texture2D
 @export var onion_particles: Texture2D
 @export var garlic_particles: Texture2D
-@export var speed_multiplier := 1.4
 @export var swerve_amplitude := 30.0
 @export var swerve_frequency := 2.0
 @export var bounce_recovery_speed := 500.0
@@ -34,8 +33,8 @@ func _physics_process(delta):
 		_apply_bounce_offset(delta)
 		return
 	time_alive += delta
-	var effective_speed = max(Globals.cur_forward_speed, Globals.BASE_FORWARD_SPEED)
-	position.y += delta * effective_speed * speed_multiplier
+	var effective_speed = 100.0
+	position.y += delta * (effective_speed + Globals.cur_forward_speed)
 	position.x = base_x + sin(time_alive * swerve_frequency + swerve_phase) * swerve_amplitude
 	_apply_bounce_offset(delta)
 	if position.y > 1000:
