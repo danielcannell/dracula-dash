@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cltc60dk0p1d7"]
 
-[ext_resource type="Texture2D" uid="uid://tpn7u2y665qp" path="res://art/Road.png" id="1_mv8x7"]
+[ext_resource type="Texture2D" uid="uid://dgwsxalvb5t7h" path="res://art/road.png" id="1_mv8x7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_arcuu"]
 size = Vector2(267, 622)
@@ -8,17 +8,19 @@ size = Vector2(267, 622)
 [node name="Road" type="StaticBody2D" unique_id=1250806860]
 
 [node name="RoadParallax" type="Parallax2D" parent="." unique_id=108040734]
-repeat_size = Vector2(0, 1000)
+repeat_size = Vector2(0, 2560)
 autoscroll = Vector2(0, 300)
 repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="RoadParallax" unique_id=395569597]
+texture_filter = 1
+scale = Vector2(5, 5)
 texture = ExtResource("1_mv8x7")
 
 [node name="Left Collision" type="CollisionShape2D" parent="." unique_id=2044148048]
-position = Vector2(-574, -1)
+position = Vector2(-779, -1)
 shape = SubResource("RectangleShape2D_arcuu")
 
 [node name="Right Collision" type="CollisionShape2D" parent="." unique_id=505948494]
-position = Vector2(576, -1)
+position = Vector2(777, -1)
 shape = SubResource("RectangleShape2D_arcuu")
