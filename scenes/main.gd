@@ -5,10 +5,9 @@ extends Node
 func _ready() -> void:
 	if DisplayServer.is_touchscreen_available():
 		$VirtualJoystick.visible = true
+	print("Joystick: ", Input.get_joy_name(0))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(Input.get_joy_name(0))
-	print(Input.get_axis("turn_left", "turn_right"))
 	pass

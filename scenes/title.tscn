@@ -3,25 +3,33 @@
 [ext_resource type="Script" uid="uid://bujgov46mv1wk" path="res://scripts/title.gd" id="1_4ignj"]
 [ext_resource type="Texture2D" uid="uid://cfokiqb27f73t" path="res://art/title.png" id="2_wosw1"]
 
-[node name="Title" type="CanvasLayer" unique_id=2026377788]
+[node name="Title" type="CenterContainer" unique_id=225058406]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_4ignj")
 
-[node name="Start" type="Button" parent="." unique_id=1831149590]
-offset_left = 194.0
-offset_top = 343.0
-offset_right = 290.0
-offset_bottom = 374.0
+[node name="Menu" type="VBoxContainer" parent="." unique_id=1280279031]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="TextureRect" type="TextureRect" parent="Menu" unique_id=1513778689]
+layout_mode = 2
+texture = ExtResource("2_wosw1")
+
+[node name="Buttons" type="VBoxContainer" parent="Menu" unique_id=710386060]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Start" type="Button" parent="Menu/Buttons" unique_id=1831149590]
+layout_mode = 2
 focus_neighbor_bottom = NodePath("../Exit")
 text = "Start Game"
 
-[node name="Exit" type="Button" parent="." unique_id=580037529]
-offset_left = 223.0
-offset_top = 399.0
-offset_right = 260.0
-offset_bottom = 430.0
+[node name="Exit" type="Button" parent="Menu/Buttons" unique_id=580037529]
+layout_mode = 2
 focus_neighbor_top = NodePath("../Start")
 text = "Exit"
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1559885821]
-position = Vector2(260, 166)
-texture = ExtResource("2_wosw1")
