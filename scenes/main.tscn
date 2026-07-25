@@ -12,6 +12,7 @@
 [node name="Road" parent="." unique_id=1145970626 instance=ExtResource("2_0wfyh")]
 
 [node name="Dracula" parent="." unique_id=199222267 instance=ExtResource("1_o5qli")]
+position = Vector2(0, 100)
 scale = Vector2(5, 5)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=930041559]
