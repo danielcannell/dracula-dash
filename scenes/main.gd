@@ -33,6 +33,7 @@ func _on_spawn_explode(pos: Vector2):
 	var explosion = $BloodExplode.duplicate()
 	add_child(explosion)
 	explosion.translate(pos)
+	explosion.finished.connect(explosion.queue_free)
 	explosion.restart()
 
 func _input(event: InputEvent) -> void:

@@ -18,19 +18,18 @@
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ky4ls"]
 resource_local_to_scene = true
 particle_flag_disable_z = true
-angle_min = -720.0
-angle_max = 720.0
-inherit_velocity_ratio = 1.0
+angle_min = -179.99998
+angle_max = 180.00002
 direction = Vector3(0, 0, 0)
 spread = 180.0
-initial_velocity_min = 300.0
-initial_velocity_max = 700.0
+initial_velocity_min = 200.0
+initial_velocity_max = 600.0
 gravity = Vector3(0, 0, 0)
 scale_min = 2.0
 scale_max = 5.0
 collision_mode = 1
-collision_friction = 0.0
-collision_bounce = 0.0
+collision_friction = 0.1
+collision_bounce = 1.0
 
 [node name="Main" type="Node" unique_id=197559345]
 script = ExtResource("1_0wfyh")
@@ -121,6 +120,7 @@ texture = ExtResource("13_trceg")
 lifetime = 0.75
 one_shot = true
 explosiveness = 0.9
+collision_base_size = 1.5
 process_material = SubResource("ParticleProcessMaterial_ky4ls")
 
 [connection signal="score_update" from="." to="CanvasLayer/UI/Score" method="_on_score_update"]
