@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cltc60dk0p1d7"]
 
-[ext_resource type="Texture2D" uid="uid://fo3xuxjwlg7i" path="res://art/road.png" id="1_mv8x7"]
+[ext_resource type="Texture2D" uid="uid://bg56yqh2khcms" path="res://art/road.png" id="1_mv8x7"]
 [ext_resource type="Script" uid="uid://bx7d12epqj2wv" path="res://scripts/road_parallax.gd" id="1_my2y2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_arcuu"]

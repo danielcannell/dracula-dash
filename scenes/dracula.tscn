@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bttwaix4lnef6"]
 
 [ext_resource type="Script" uid="uid://uy3vauh8sdkx" path="res://scripts/dracula.gd" id="1_bwuyn"]
-[ext_resource type="Texture2D" uid="uid://6s74t6d6w7m2" path="res://art/ambulance.png" id="2_bwuyn"]
+[ext_resource type="Texture2D" uid="uid://bh0fdo4lr27dj" path="res://art/ambulance.png" id="2_bwuyn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0wfyh"]
 
