@@ -6,6 +6,11 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0wfyh"]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mr007"]
+resource_local_to_scene = true
+cull_mode = 1
+polygon = PackedVector2Array(-4, -10, 4, -10, 8, -2, 8, 20, -8, 20, -8, -2)
+
 [node name="Dracula" type="CharacterBody2D" unique_id=199222267]
 script = ExtResource("1_bwuyn")
 
@@ -22,3 +27,6 @@ shape = SubResource("CircleShape2D_0wfyh")
 [node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=264607544]
 position = Vector2(0, 5)
 texture = ExtResource("6_iu7kl")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1230462718]
+occluder = SubResource("OccluderPolygon2D_mr007")
