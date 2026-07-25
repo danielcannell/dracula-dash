@@ -5,12 +5,7 @@ var angle: float = 0
 
 
 func _physics_process(delta: float) -> void:
-	var turn = 0
-	if Input.is_action_pressed("turn_left"):
-		turn -= 1
-	if Input.is_action_pressed("turn_right"):
-		turn += 1
-	
+	var turn = Input.get_axis("turn_left", "turn_right")
 	angle += 0.1 * (turn - angle)
 	rotation = angle
 	
