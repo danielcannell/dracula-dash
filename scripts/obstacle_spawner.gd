@@ -1,7 +1,6 @@
 extends Node2D
 
 @export var obstacle_scene: PackedScene
-@export var scroll_speed := 300.0
 @export var spawn_interval_min := 0.5
 @export var spawn_interval_max := 1.8
 
@@ -44,6 +43,5 @@ func _on_spawn_timer_timeout():
 
 	var lane_x = lane_positions[randi() % lane_positions.size()]
 	obstacle.global_position = Vector2(lane_x, SPAWN_Y)
-	obstacle.scroll_speed = scroll_speed
 	
 	_start_next_spawn_timer()

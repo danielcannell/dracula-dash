@@ -10,7 +10,6 @@ size = Vector2(267, 622)
 
 [node name="RoadParallax" type="Parallax2D" parent="." unique_id=108040734]
 repeat_size = Vector2(0, 2560)
-autoscroll = Vector2(0, 300)
 repeat_times = 3
 script = ExtResource("1_my2y2")
 

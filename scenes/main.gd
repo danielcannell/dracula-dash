@@ -1,6 +1,5 @@
 extends Node
 
-
 signal score_update(score: float)
 
 

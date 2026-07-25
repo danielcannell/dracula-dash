@@ -18,12 +18,13 @@ var angle: float = 0
 var blood_level: float = 100
 var state := State.NORMAL
 var bounce_velocity := Vector2.ZERO
+var base_pos: Vector2
 
-@onready var road: Parallax2D = get_node("/root/Main/Road/RoadParallax")
 @onready var spawner = get_node("/root/Main/ObstacleSpawner")
 
 func _ready():
 	add_to_group("player")
+	base_pos = position
 
 func _process(delta: float) -> void:
 	# blood_level -= delta * BLOOD_DRAIN_RATE
@@ -39,13 +40,17 @@ func _physics_process(delta: float) -> void:
 			_normal_movement(delta)
 		State.STUNNED:
 			_stunned_movement(delta)
-			
-	_sync_road_offset()
-
 
 func _normal_movement(delta: float) -> void:
 	# Get input in range [-1, 1]
 	var turn = Input.get_axis("turn_left", "turn_right")
+	var dodge = Input.get_axis("dodge_up", "dodge_down")
+	
+	const kf = 0.9
+	var dodge_return_force = (position - base_pos).y * kf
+	if abs(dodge_return_force) < 0.001:
+		dodge_return_force = 0.0
+	var dodge_force = dodge * 100
 	
 	# Exponential smoothing of direction angle
 	var alpha = 1 - exp(-delta / TURN_TIME_SCALE_S)
@@ -55,7 +60,8 @@ func _normal_movement(delta: float) -> void:
 	rotation = angle
 	
 	# Physics
-	velocity = SPEED * Vector2(sin(angle), 0)
+	var vspeed = (dodge_force - dodge_return_force) * delta * 400
+	velocity = SPEED * Vector2(sin(angle), 0) + Vector2(0, vspeed)
 	move_and_slide()
 	
 	for i in get_slide_collision_count():
@@ -71,9 +77,6 @@ func _stunned_movement(delta: float) -> void:
 	bounce_velocity = bounce_velocity.move_toward(Vector2.ZERO, BOUNCE_DECAY * delta)
 	global_position.y = move_toward(global_position.y, 100, Y_RECENTRE_SPEED * delta)
 
-func _sync_road_offset() -> void:
-	road.scroll_offset.y = road.base_scroll - global_position.y
-
 func _on_hit(collision: KinematicCollision2D) -> void:
 	state = State.STUNNED
 	bounce_velocity = collision.get_normal() * BOUNCE_STRENGTH
@@ -86,8 +89,5 @@ func _on_hit(collision: KinematicCollision2D) -> void:
 	state = State.NORMAL
 
 func _freeze_scroll(frozen: bool) -> void:
-	road.scrolling = not frozen
 	spawner.set_paused(frozen)
-	get_tree().call_group("obstacles", "set_scroll_speed", 0.0 if frozen else spawner.scroll_speed)
-	get_tree().call_group("splats", "set_scroll_speed", 0.0 if frozen else spawner.scroll_speed)
-	
+	Globals.cur_forward_speed = 0.0 if frozen else 300.0
