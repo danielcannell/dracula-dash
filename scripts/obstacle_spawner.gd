@@ -21,6 +21,9 @@ func _ready():
 func _start_next_spawn_timer():
 	$SpawnTimer.wait_time = randf_range(spawn_interval_min, spawn_interval_max)
 	$SpawnTimer.start()
+	
+func set_paused(paused: bool):
+	$SpawnTimer.paused = paused
 
 func _setup_lanes():
 	var screen_size = get_viewport_rect().size

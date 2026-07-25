@@ -87,6 +87,7 @@ func _on_hit(collision: KinematicCollision2D) -> void:
 
 func _freeze_scroll(frozen: bool) -> void:
 	road.scrolling = not frozen
+	spawner.set_paused(frozen)
 	get_tree().call_group("obstacles", "set_scroll_speed", 0.0 if frozen else spawner.scroll_speed)
 	get_tree().call_group("splats", "set_scroll_speed", 0.0 if frozen else spawner.scroll_speed)
 	
