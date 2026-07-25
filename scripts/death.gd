@@ -8,6 +8,7 @@ func _ready():
 func _on_death():
 	if not visible:
 		cur_scale = 0
+		$ColorRect/Restart.grab_focus()
 		visible = true
 
 func _process(delta):
