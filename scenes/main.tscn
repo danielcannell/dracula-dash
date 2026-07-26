@@ -175,4 +175,5 @@ stream = ExtResource("16_jbj1t")
 [connection signal="dead" from="Dracula" to="Death" method="_on_death"]
 [connection signal="restart" from="Death" to="." method="restart"]
 [connection signal="show_leaderboard" from="Death" to="." method="_on_death_show_leaderboard"]
+[connection signal="death_positions" from="Leaderboard" to="DeadPlayerSpawner" method="_on_death_positions"]
 [connection signal="restart" from="Leaderboard" to="." method="restart"]

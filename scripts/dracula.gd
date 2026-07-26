@@ -93,6 +93,9 @@ func _physics_process(delta: float) -> void:
 		var pos = wheels[i].global_position - trail_container.position
 		_extend_trail(wheel_trails[i], pos)
 
+	Globals.cur_position.x = position.x
+	Globals.cur_position.y += -delta * Globals.cur_forward_speed
+
 func _process_wheel_trail():
 	for i in range(len(wheels)):
 		var pos = wheels[i].global_position - trail_container.position

@@ -2,6 +2,7 @@ extends CanvasLayer
 
 
 signal restart()
+signal death_positions(positions: Array)
 
 
 const SCORES_URL = "https://api.dracula-dash.co.uk/scores"
@@ -43,7 +44,9 @@ func post_score():
 	if name == "":
 		return
 
-	var err = $HTTPRequest.request(SCORES_URL, ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"name": name, "score": score, "death_pos_x": 0.0, "death_pos_y": 0.0}))
+	var death_pos = Globals.cur_position
+
+	var err = $HTTPRequest.request(SCORES_URL, ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"name": name, "score": score, "death_pos_x": death_pos.x, "death_pos_y": death_pos.y}))
 	if err == Error.OK:
 		$ColorRect/VBoxContainer/HBoxContainer.visible = false
 		http_state = HTTPState.POST
@@ -96,6 +99,11 @@ func update_leaderboard(json: Dictionary):
 
 		container.add_child(name_label)
 		container.add_child(score_label)
+
+	var deaths = []
+	for row in json["scores"]:
+		deaths.append({"name": row["name"], "pos": Vector2(row["death_pos_x"], row["death_pos_y"])})
+	death_positions.emit(deaths)
 
 
 func _on_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray):
