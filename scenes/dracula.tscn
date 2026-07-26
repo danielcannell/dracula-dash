@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://uy3vauh8sdkx" path="res://scripts/dracula.gd" id="1_bwuyn"]
 [ext_resource type="Texture2D" uid="uid://dvpb2nns634j6" path="res://art/ambulance-siren.png" id="2_42sh8"]
 [ext_resource type="Script" uid="uid://bixvsbipcb8ym" path="res://scripts/coffin.gd" id="3_42sh8"]
+[ext_resource type="Texture2D" uid="uid://dyg0rog5ymqwv" path="res://art/immune-spritesheet-placeholder.png" id="3_x2wbg"]
 [ext_resource type="Texture2D" uid="uid://d1ht124fc66r3" path="res://art/coffin_dracula.png" id="4_vcdwq"]
 [ext_resource type="Texture2D" uid="uid://s6f15w0vbsdc" path="res://art/coffin_lid.png" id="5_m0uiu"]
 [ext_resource type="AudioStream" uid="uid://8sbesukidbmk" path="res://audio/Hit1.wav" id="5_x2wbg"]
 [ext_resource type="Texture2D" uid="uid://bnmd3x8tjqsl3" path="res://art/coffin_ropes.png" id="6_iu7kl"]
-[ext_resource type="Texture2D" uid="uid://dyg0rog5ymqwv" path="res://art/immune-spritesheet-placeholder.png" id="3_x2wbg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_42sh8"]
 atlas = ExtResource("2_42sh8")
@@ -72,9 +72,7 @@ script = ExtResource("1_bwuyn")
 texture_filter = 1
 position = Vector2(0, 5)
 sprite_frames = SubResource("SpriteFrames_jjb4j")
-animation = &"immune"
 autoplay = "default"
-frame_progress = 0.8532651
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1269495273]
 shape = SubResource("CircleShape2D_0wfyh")

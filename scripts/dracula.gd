@@ -51,6 +51,10 @@ func _ready() -> void:
 		var scene = trail_scene.instantiate()
 		wheel_trails.append(scene)
 		trail_container.add_child(scene)
+	
+		hit_bloody.connect(
+			func (obj): 
+				scene.make_bloody())
 
 func _on_dead() -> void:
 	state = State.DEAD
@@ -175,6 +179,6 @@ func _small_bounce(collision: KinematicCollision2D) -> void:
 
 func _extend_trail(line: Line2D, pos: Vector2) -> void:
 	if line.get_point_count() == 0 or pos.distance_to(line.points[-1]) > 4.0:
-		line.add_point(pos)
+		line.trail_add_point(pos)
 		if line.get_point_count() > MAX_TRAIL_POINTS:
 			line.remove_point(0)
