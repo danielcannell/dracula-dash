@@ -85,6 +85,7 @@ sirens={
 2d_physics/layer_4="powerups"
 2d_physics/layer_5="walls"
 2d_physics/layer_6="tractors"
+2d_physics/layer_7="dead_player"
 
 [physics]
 

@@ -23,7 +23,6 @@ func _ready() -> void:
 	$Road.body_entered_grass.connect(_on_grass_entered)
 	$Road.body_exited_grass.connect(_on_grass_exited)
 
-
 func _on_grass_entered(node: Node2D):
 	if node == $Dracula:
 		$Dracula.on_entered_grass()

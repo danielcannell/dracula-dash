@@ -4,6 +4,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	add_to_group("children")
+	add_to_group("dead_players")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -14,9 +15,23 @@ func _physics_process(delta: float) -> void:
 
 func on_hit():
 	$CollisionPolygon2D.disabled = true
+	explode()
 
 func get_blood_bonus():
-	return 0
+	return 50
+
+
+func explode():
+	$AnimatedSprite2D.show()
+	$AnimatedSprite2D.play("explode")
+	$Coffin.hide()
+	
+	
+	# Wait until the animation plays its last frame and finishes
+	await $AnimatedSprite2D.animation_finished
+	
+	# Remove/unload the node from memory and the scene tree
+	queue_free()
 
 
 # set the player name

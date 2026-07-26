@@ -3,14 +3,86 @@
 [ext_resource type="Script" uid="uid://piklkjb6y1x4" path="res://scripts/dead_player.gd" id="1_cmqxu"]
 [ext_resource type="Texture2D" uid="uid://0jx1fuquf7xd" path="res://art/dead_dracula.png" id="2_g2j6w"]
 [ext_resource type="FontFile" uid="uid://cc8rv0d8dj3o" path="res://fonts/Montenegrin_Gothic_One/MontenegrinGothicOne-Regular.ttf" id="3_52v75"]
+[ext_resource type="Texture2D" uid="uid://ca0m08kn5yiqm" path="res://art/dead_dracula_hit_animation.png" id="4_g2j6w"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_y6deb"]
 font_size = 32
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_52v75"]
+atlas = ExtResource("4_g2j6w")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cb3vg"]
+atlas = ExtResource("4_g2j6w")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wvsg"]
+atlas = ExtResource("4_g2j6w")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jhya"]
+atlas = ExtResource("4_g2j6w")
+region = Rect2(240, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7c0ec"]
+atlas = ExtResource("4_g2j6w")
+region = Rect2(320, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfq1u"]
+atlas = ExtResource("4_g2j6w")
+region = Rect2(400, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vku5x"]
+atlas = ExtResource("4_g2j6w")
+region = Rect2(480, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6x85"]
+atlas = ExtResource("4_g2j6w")
+region = Rect2(560, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pho0"]
+atlas = ExtResource("4_g2j6w")
+region = Rect2(640, 0, 80, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u7xfg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52v75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cb3vg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wvsg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jhya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7c0ec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfq1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vku5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6x85")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pho0")
+}],
+"loop": 0,
+"name": &"explode",
+"speed": 20.0
+}]
+
 [node name="DeadPlayer" type="StaticBody2D" unique_id=1634795958]
-collision_layer = 4
+collision_layer = 68
 collision_mask = 0
 script = ExtResource("1_cmqxu")
 
@@ -33,3 +105,11 @@ clip_text = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1290513334]
 polygon = PackedVector2Array(-50, 38, -54, 0, 20, -38, 59, -26, 59, 19)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=351551740]
+visible = false
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_u7xfg")
+animation = &"explode"
+frame = 8
+frame_progress = 1.0
