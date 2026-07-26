@@ -18,7 +18,7 @@ const NUM_LANES := 4
 const BORDER_MARGIN := 175.0
 const SPAWN_Y := -1000.0
 const POPE_SPAWN_Y := 500.0
-const WARNING_Y := 250.0
+const WARNING_Y := 350.0
 
 @onready
 var spawn_table = [

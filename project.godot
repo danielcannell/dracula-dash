@@ -23,7 +23,7 @@ Globals="*uid://bana7bgeve0op"
 [display]
 
 window/size/viewport_width=1280
-window/size/viewport_height=1100
+window/size/viewport_height=950
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

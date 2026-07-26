@@ -87,7 +87,7 @@ script = ExtResource("22_jscy8")
 dead_player = ExtResource("23_pm3ni")
 
 [node name="Dracula" parent="." unique_id=199222267 instance=ExtResource("1_o5qli")]
-position = Vector2(0, 182)
+position = Vector2(0, 280)
 scale = Vector2(5, 5)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=930041559]
