@@ -4,6 +4,9 @@ const SPEED = -2000.0
 
 signal on_hit(object: PhysicsBody2D)
 
+func _ready():
+	$AudioStreamPlayer2D.play()
+
 func _physics_process(delta: float) -> void:
 	# Ignores player forward speed
 	velocity = Vector2(0, SPEED).rotated(rotation)

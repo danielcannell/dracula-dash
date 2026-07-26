@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bsx4smd1uoao4" path="res://art/popemobile_pope.png" id="2_oyyen"]
 [ext_resource type="Script" uid="uid://bixvsbipcb8ym" path="res://scripts/coffin.gd" id="3_d4wbj"]
 [ext_resource type="Texture2D" uid="uid://dvpmjq2e55u43" path="res://art/popemobile_cage.png" id="4_pcvcw"]
+[ext_resource type="AudioStream" uid="uid://d3fcci3cwcsgd" path="res://audio/pope.wav" id="6_d4wbj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2qwq6"]
 height = 40.0
@@ -31,3 +32,6 @@ car = NodePath("../..")
 
 [node name="Cage" type="Sprite2D" parent="Node2D" unique_id=753701453]
 texture = ExtResource("4_pcvcw")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1040341752]
+stream = ExtResource("6_d4wbj")
