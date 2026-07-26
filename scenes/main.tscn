@@ -148,6 +148,7 @@ script = ExtResource("15_jkv2x")
 [node name="Main_Music" type="AudioStreamPlayer2D" parent="Audio" unique_id=1315839927]
 stream = ExtResource("16_jbj1t")
 
+[connection signal="score_update" from="." to="Leaderboard" method="set_score"]
 [connection signal="score_update" from="." to="CanvasLayer/UI/Score" method="_on_score_update"]
 [connection signal="blood" from="Dracula" to="CanvasLayer/UI/Healthbar" method="set_health"]
 [connection signal="dead" from="Dracula" to="." method="_on_dead"]

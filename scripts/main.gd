@@ -1,6 +1,6 @@
 extends Node
 
-signal score_update(score: float)
+signal score_update(score: int)
 
 
 var score: float = 0.0
@@ -21,14 +21,11 @@ func _ready() -> void:
 	$ObstacleSpawner.on_pope_hit.connect(_on_pope_hit)
 
 
-func _on_leaderboard_updated(leaderboard: Dictionary):
-	print("Leaderboard: ", leaderboard)
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if not dead:
 		score += delta
-		emit_signal("score_update", score)
+		score_update.emit(round(score))
 
 func _on_pope_hit(object: StaticBody2D) -> void:
 	if object.is_in_group("children") or object.is_in_group("cyclists"):
