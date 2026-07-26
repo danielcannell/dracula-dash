@@ -29,10 +29,6 @@ size_flags_horizontal = 4
 layout_mode = 2
 text = "Start Game"
 
-[node name="Exit" type="Button" parent="Menu/Buttons" unique_id=580037529]
-layout_mode = 2
-text = "Exit"
-
 [node name="Audio" type="Node" parent="." unique_id=1965585735]
 
 [node name="Intro_Music" type="AudioStreamPlayer2D" parent="Audio" unique_id=931182162]

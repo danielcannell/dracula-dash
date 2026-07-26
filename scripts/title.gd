@@ -6,10 +6,6 @@ func _on_start_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
 
 
-func _on_exit_pressed() -> void:
-	get_tree().quit()
-
-
 func _input(event: InputEvent) -> void:
 	Globals.check_gamepad_active(event)
 	if Globals.gamepad_active and not joy_was_active:
@@ -23,6 +19,4 @@ func _input(event: InputEvent) -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Menu/Buttons/Start.pressed.connect(_on_start_pressed)
-	$Menu/Buttons/Exit.pressed.connect(_on_exit_pressed)
-
 	$Audio/Intro_Music.play()
