@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://waq8avl54yi"]
 
-[ext_resource type="Texture2D" uid="uid://drefq8sd3c0iy" path="res://art/powerup-placeholder.png" id="1_8vsy1"]
 [ext_resource type="Script" uid="uid://dm818noy7j5ji" path="res://scripts/powerup.gd" id="1_ih772"]
+[ext_resource type="Texture2D" uid="uid://dksop6ldrr1ed" path="res://art/immune-powerup.png" id="2_ih772"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ky4ls"]
 
 [node name="PowerupRoot" type="StaticBody2D" unique_id=1936270833]
+collision_layer = 8
+collision_mask = 0
 script = ExtResource("1_ih772")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=778478376]
@@ -13,4 +15,5 @@ scale = Vector2(1.645, 1.645)
 shape = SubResource("CircleShape2D_ky4ls")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1395643848]
-texture = ExtResource("1_8vsy1")
+scale = Vector2(2, 2)
+texture = ExtResource("2_ih772")

@@ -18,9 +18,9 @@ var wheel_trails = []
 
 signal dead
 signal blood(health: float)
-signal hit(object: StaticBody2D)
-signal hit_bloody(object: StaticBody2D)
-signal hit_powerup(object: StaticBody2D)
+signal hit(object: PhysicsBody2D)
+signal hit_bloody(object: PhysicsBody2D)
+signal hit_powerup(object: PhysicsBody2D)
 signal stunned(stun: bool)
 
 const TURN_TIME_SCALE_S = 0.1
@@ -31,6 +31,7 @@ const BOUNCE_STRENGTH = 400.0
 const BOUNCE_DECAY = 1000.0
 const Y_RECENTRE_SPEED = 300.0
 const HIT_DAMAGE = 10.0
+const POPE_DAMAGE = 100.0
 const SMALL_BOUNCE_STRENGTH = 200.0
 const IMMUNE_TIMER = 3
 
@@ -51,6 +52,10 @@ func _ready() -> void:
 		var scene = trail_scene.instantiate()
 		wheel_trails.append(scene)
 		trail_container.add_child(scene)
+
+		hit_bloody.connect(
+			func (obj):
+				scene.make_bloody())
 
 func _on_dead() -> void:
 	state = State.DEAD
@@ -119,7 +124,6 @@ func _normal_movement(delta: float) -> void:
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
-		print("collision")
 		if collider.is_in_group("obstacles"):
 			hit.emit(collider)
 			_on_hit(collision)
@@ -138,14 +142,15 @@ func _normal_movement(delta: float) -> void:
 
 
 func _immune_on_hit():
-	$AnimatedSprite2D.play("immune")
-	collision_mask = 0
-	var timer = get_tree().create_timer(IMMUNE_TIMER)
-	timer.timeout.connect(_immune_timeout)
-
-func _immune_timeout():
-	collision_mask = 1
-	$AnimatedSprite2D.play("default")
+	$AnimatedSprite2D.play("immune_start")
+	var old_mask = collision_mask
+	var old_layer = collision_layer
+	collision_mask = 16
+	collision_layer = 0
+	await get_tree().create_timer(IMMUNE_TIMER).timeout
+	collision_mask = old_mask
+	collision_layer = old_layer
+	$AnimatedSprite2D.play("immune_stop")
 
 
 func _stunned_movement(delta: float) -> void:
@@ -153,6 +158,10 @@ func _stunned_movement(delta: float) -> void:
 	move_and_slide()
 	bounce_velocity = bounce_velocity.move_toward(Vector2.ZERO, BOUNCE_DECAY * delta)
 	global_position.y = move_toward(global_position.y, 100, Y_RECENTRE_SPEED * delta)
+
+func hit_by_pope() -> void:
+	$Audio/Obstacle_Hit.play()
+	add_blood(-POPE_DAMAGE)
 
 func _on_hit(collision: KinematicCollision2D) -> void:
 	$Audio/Obstacle_Hit.play()
@@ -175,6 +184,6 @@ func _small_bounce(collision: KinematicCollision2D) -> void:
 
 func _extend_trail(line: Line2D, pos: Vector2) -> void:
 	if line.get_point_count() == 0 or pos.distance_to(line.points[-1]) > 4.0:
-		line.add_point(pos)
+		line.trail_add_point(pos)
 		if line.get_point_count() > MAX_TRAIL_POINTS:
 			line.remove_point(0)

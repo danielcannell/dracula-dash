@@ -10,6 +10,8 @@
 
 [node name="Obstacle" type="StaticBody2D" unique_id=233201907]
 scale = Vector2(3.5, 3.5)
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_drdry")
 sprite_variants = Array[Texture2D]([ExtResource("2_drdry"), ExtResource("3_i4xvc"), ExtResource("4_5oy3q"), ExtResource("5_0drx6")])
 

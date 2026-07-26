@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyg0rog5ymqwv"
-path="res://.godot/imported/immune-spritesheet-placeholder.png-f1aef7f72be057e2417ddb4b7397450b.ctex"
+uid="uid://dksop6ldrr1ed"
+path="res://.godot/imported/immune-powerup.png-eaff40a003c6e1950c671412d265ce8a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/immune-spritesheet-placeholder.png"
-dest_files=["res://.godot/imported/immune-spritesheet-placeholder.png-f1aef7f72be057e2417ddb4b7397450b.ctex"]
+source_file="res://art/immune-powerup.png"
+dest_files=["res://.godot/imported/immune-powerup.png-eaff40a003c6e1950c671412d265ce8a.ctex"]
 
 [params]
 

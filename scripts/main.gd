@@ -1,6 +1,6 @@
 extends Node
 
-signal score_update(score: float)
+signal score_update(score: int)
 
 
 var score: float = 0.0
@@ -18,22 +18,34 @@ func _ready() -> void:
 	$Dracula.hit.connect(_on_hit)
 	$Dracula.hit_bloody.connect(_on_hit_bloody)
 	$Dracula.hit_powerup.connect(func (obj): obj.on_hit())
+	$ObstacleSpawner.on_pope_hit.connect(_on_pope_hit)
 
-
-func _on_leaderboard_updated(leaderboard: Dictionary):
-	print("Leaderboard: ", leaderboard)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if not dead:
-		score += delta
-		emit_signal("score_update", score)
+		score += delta * (Globals.cur_forward_speed / 200) ** 2
+		score_update.emit(round(score))
 
-func _on_hit(_object: StaticBody2D) -> void:
+func _on_pope_hit(object: PhysicsBody2D) -> void:
+	if object.is_in_group("children") or object.is_in_group("cyclists"):
+		$SplatSpawner.make_splat(object.global_position)
+		object.on_hit()
+
+		var explosion_texture: Texture2D = null
+		if object.has_method("get_explosion_texture"):
+			explosion_texture = object.get_explosion_texture()
+
+		_on_spawn_explode(object.global_position - Vector2(0, 20), explosion_texture)
+	elif object.is_in_group("player"):
+		$Dracula.hit_by_pope()
+		$Dracula/CollisionShape2D.disabled = true
+
+func _on_hit(_object: PhysicsBody2D) -> void:
 	if Globals.gamepad_active:
 		Input.start_joy_vibration(0, 0.0, 1.0, 0.5)
 
-func _on_hit_bloody(object: StaticBody2D) -> void:
+func _on_hit_bloody(object: PhysicsBody2D) -> void:
 	if Globals.gamepad_active:
 		Input.start_joy_vibration(0, 1.0, 0.0, 0.5)
 	$SplatSpawner.make_splat(object.global_position)
@@ -65,3 +77,6 @@ func _input(event: InputEvent) -> void:
 func _on_death_show_leaderboard() -> void:
 	$Death.visible = false
 	$Leaderboard.visible = true
+
+func restart() -> void:
+	get_tree().reload_current_scene()

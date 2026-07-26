@@ -11,6 +11,8 @@ size = Vector2(93, 260)
 
 [node name="Cyclist" type="StaticBody2D" unique_id=1057405724]
 scale = Vector2(0.85, 0.85)
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_0wkly")
 garlic_texture = ExtResource("2_5u3tr")
 onion_texture = ExtResource("3_8235r")

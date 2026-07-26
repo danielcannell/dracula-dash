@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bjl1id363frg5"]
+[gd_scene format=3 uid="uid://berrx4qdo4b6r"]
 
 [ext_resource type="Script" uid="uid://nxaaoatubu83" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bttwaix4lnef6" path="res://scenes/dracula.tscn" id="1_o5qli"]
@@ -22,6 +22,9 @@
 [ext_resource type="Script" uid="uid://db3qne3trfobw" path="res://scripts/audio.gd" id="15_jkv2x"]
 [ext_resource type="AudioStream" uid="uid://d3ijff0tu3x1w" path="res://audio/main_song.wav" id="16_jbj1t"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_oyyen"]
+font_size = 32
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ky4ls"]
 resource_local_to_scene = true
 particle_flag_disable_z = true
@@ -43,6 +46,15 @@ collision_bounce = 1.0
 script = ExtResource("1_0wfyh")
 
 [node name="Background" type="CanvasLayer" parent="." unique_id=1242201165]
+layer = -100
+
+[node name="ColorRect" type="ColorRect" parent="Background" unique_id=174662905]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3882353, 0.67058825, 0.24705882, 1)
 
 [node name="Road" parent="." unique_id=1145970626 instance=ExtResource("2_0wfyh")]
 
@@ -64,9 +76,10 @@ popemobile_warning = ExtResource("12_yc10j")
 
 [node name="PopeTimer" type="Timer" parent="ObstacleSpawner" unique_id=1702194629]
 one_shot = true
+autostart = true
 
 [node name="Dracula" parent="." unique_id=199222267 instance=ExtResource("1_o5qli")]
-position = Vector2(0, 100)
+position = Vector2(0, 182)
 scale = Vector2(5, 5)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=930041559]
@@ -119,13 +132,13 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -413.0
+offset_left = -219.0
 offset_top = 17.0
-offset_right = -216.0
-offset_bottom = 40.0
+offset_right = -22.0
+offset_bottom = 62.0
 grow_horizontal = 0
-scale = Vector2(2, 2)
 text = "Score"
+label_settings = SubResource("LabelSettings_oyyen")
 horizontal_alignment = 2
 script = ExtResource("11_ya4ey")
 
@@ -147,8 +160,11 @@ script = ExtResource("15_jkv2x")
 [node name="Main_Music" type="AudioStreamPlayer2D" parent="Audio" unique_id=1315839927]
 stream = ExtResource("16_jbj1t")
 
+[connection signal="score_update" from="." to="Leaderboard" method="set_score"]
 [connection signal="score_update" from="." to="CanvasLayer/UI/Score" method="_on_score_update"]
 [connection signal="blood" from="Dracula" to="CanvasLayer/UI/Healthbar" method="set_health"]
 [connection signal="dead" from="Dracula" to="." method="_on_dead"]
 [connection signal="dead" from="Dracula" to="Death" method="_on_death"]
+[connection signal="restart" from="Death" to="." method="restart"]
 [connection signal="show_leaderboard" from="Death" to="." method="_on_death_show_leaderboard"]
+[connection signal="restart" from="Leaderboard" to="." method="restart"]

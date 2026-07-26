@@ -31,7 +31,7 @@ size_flags_vertical = 4
 
 [node name="LeaderboardLabel" type="Label" parent="ColorRect/VBoxContainer" unique_id=730126092]
 layout_mode = 2
-text = "Leaderbaord"
+text = "Leaderboard"
 horizontal_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="ColorRect/VBoxContainer" unique_id=1658112866]
@@ -58,3 +58,6 @@ size_flags_vertical = 4
 text = "Restart"
 
 [node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=698637857]
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/HBoxContainer/SubmitButton" to="." method="_on_submit_button_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
