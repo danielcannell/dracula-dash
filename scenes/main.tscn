@@ -153,4 +153,6 @@ stream = ExtResource("16_jbj1t")
 [connection signal="blood" from="Dracula" to="CanvasLayer/UI/Healthbar" method="set_health"]
 [connection signal="dead" from="Dracula" to="." method="_on_dead"]
 [connection signal="dead" from="Dracula" to="Death" method="_on_death"]
+[connection signal="restart" from="Death" to="." method="restart"]
 [connection signal="show_leaderboard" from="Death" to="." method="_on_death_show_leaderboard"]
+[connection signal="restart" from="Leaderboard" to="." method="restart"]

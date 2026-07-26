@@ -60,3 +60,4 @@ text = "Restart"
 [node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=698637857]
 
 [connection signal="pressed" from="ColorRect/VBoxContainer/HBoxContainer/SubmitButton" to="." method="_on_submit_button_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Restart" to="." method="_on_restart_pressed"]

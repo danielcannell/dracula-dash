@@ -74,3 +74,6 @@ func _input(event: InputEvent) -> void:
 func _on_death_show_leaderboard() -> void:
 	$Death.visible = false
 	$Leaderboard.visible = true
+
+func restart() -> void:
+	get_tree().reload_current_scene()

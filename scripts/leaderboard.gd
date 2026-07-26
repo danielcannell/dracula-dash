@@ -1,6 +1,9 @@
 extends CanvasLayer
 
 
+signal restart()
+
+
 const SCORES_URL = "https://api.dracula-dash.co.uk/scores"
 enum HTTPState { IDLE, GET, POST }
 var http_state: HTTPState = HTTPState.IDLE
@@ -114,3 +117,7 @@ func _on_submit_button_pressed() -> void:
 	do_post = true
 	do_get = true
 	next_request()
+
+
+func _on_restart_pressed() -> void:
+	restart.emit()

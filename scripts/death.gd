@@ -4,6 +4,7 @@ var cur_scale = 0.0
 
 
 signal show_leaderboard()
+signal restart()
 
 
 func _ready():
@@ -24,8 +25,8 @@ func _process(delta):
 		cur_scale += 1.0 * delta
 
 func _on_restart():
+	restart.emit()
 	visible = false
-	get_tree().reload_current_scene()
 
 func _on_leaderbaord_pressed() -> void:
 	show_leaderboard.emit()
