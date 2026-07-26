@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bew87eilp8gaq"]
+
+[ext_resource type="Script" uid="uid://piklkjb6y1x4" path="res://scripts/dead_player.gd" id="1_cmqxu"]
+[ext_resource type="Texture2D" uid="uid://0jx1fuquf7xd" path="res://art/dead_dracula.png" id="2_g2j6w"]
+[ext_resource type="FontFile" uid="uid://cc8rv0d8dj3o" path="res://fonts/Montenegrin_Gothic_One/MontenegrinGothicOne-Regular.ttf" id="3_52v75"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_y6deb"]
+font_size = 40
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[node name="DeadPlayer" type="Node2D" unique_id=661465318]
+script = ExtResource("1_cmqxu")
+
+[node name="Coffin" type="Sprite2D" parent="." unique_id=812355071]
+scale = Vector2(5, 5)
+texture = ExtResource("2_g2j6w")
+
+[node name="Label" type="Label" parent="." unique_id=343264754]
+offset_left = -188.0
+offset_top = -140.0
+offset_right = 192.0
+offset_bottom = -88.0
+theme_override_fonts/font = ExtResource("3_52v75")
+theme_override_font_sizes/font_size = 14
+text = "Player Name"
+label_settings = SubResource("LabelSettings_y6deb")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
