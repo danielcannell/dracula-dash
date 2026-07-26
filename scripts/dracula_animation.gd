@@ -24,10 +24,15 @@ func _process(delta: float) -> void:
 			if cur_scale > 1:
 				var new_scale = max(cur_scale - delta * SCALE_RATE, 1)
 				set_scale(Vector2(new_scale, new_scale))
+			$BloodSprite.offset = Vector2(0, cur_offset)
+			$CoffinContainer.position = Vector2(0, cur_offset + 4)
 		_:
 			if cur_offset > MAX_OFFSET_FLYING:
 				cur_offset = max(MAX_OFFSET_FLYING, cur_offset - delta*OFFSET_SCALE_RATE)
 			offset = Vector2(0, -16 + cur_offset)
+			$BloodSprite.offset = Vector2(0, cur_offset)
+			$CoffinContainer.position = Vector2(0, cur_offset + 4)
+
 			var cur_scale = get_scale().x
 			if cur_scale < MAX_SCALE_FLYING:
 				var new_scale = min(cur_scale + delta * SCALE_RATE, MAX_SCALE_FLYING)
