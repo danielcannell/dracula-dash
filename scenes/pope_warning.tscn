@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cj4447fpm13s2" path="res://art/pope_warning.png" id="2_4q8f2"]
 
 [node name="PopeWarning" type="Node2D" unique_id=281131410]
-scale = Vector2(5, 5)
+scale = Vector2(4, 4)
 script = ExtResource("1_21css")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=736929203]

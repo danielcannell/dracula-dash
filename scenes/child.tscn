@@ -195,13 +195,14 @@ script = ExtResource("1_xoh2m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=20671243]
 texture_filter = 1
-scale = Vector2(5, 5)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_15q6v")
 animation = &"child_1"
 autoplay = "child_1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=624606137]
 position = Vector2(0, 1)
+scale = Vector2(0.8, 0.8)
 shape = SubResource("CapsuleShape2D_vc37v")
 
 [node name="Child_Hit" type="AudioStreamPlayer2D" parent="." unique_id=1993141586]

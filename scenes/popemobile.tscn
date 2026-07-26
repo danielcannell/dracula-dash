@@ -15,11 +15,11 @@ script = ExtResource("1_oyyen")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=27185193]
 position = Vector2(0, 5)
-scale = Vector2(5, 5)
+scale = Vector2(4, 4)
 shape = SubResource("CapsuleShape2D_2qwq6")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1482583321]
-scale = Vector2(5, 5)
+scale = Vector2(4, 4)
 
 [node name="Mobile" type="Sprite2D" parent="Node2D" unique_id=2067669321]
 texture = ExtResource("1_e3yjf")

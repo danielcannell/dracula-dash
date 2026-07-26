@@ -20,13 +20,13 @@ normal = Vector2(-1, 0)
 script = ExtResource("1_fy6l0")
 
 [node name="RoadParallax" type="Parallax2D" parent="." unique_id=108040734]
-repeat_size = Vector2(0, 2560)
+repeat_size = Vector2(0, 2048)
 repeat_times = 3
 script = ExtResource("1_my2y2")
 
 [node name="Sprite2D" type="Sprite2D" parent="RoadParallax" unique_id=395569597]
 texture_filter = 1
-scale = Vector2(5, 5)
+scale = Vector2(4, 4)
 texture = ExtResource("1_mv8x7")
 
 [node name="Walls" type="StaticBody2D" parent="." unique_id=28579213]
@@ -34,20 +34,20 @@ collision_layer = 16
 collision_mask = 0
 
 [node name="Left Collision" type="CollisionShape2D" parent="Walls" unique_id=2044148048]
-position = Vector2(-640, 0)
+position = Vector2(-512, 0)
 shape = SubResource("WorldBoundaryShape2D_15q6v")
 
 [node name="Right Collision" type="CollisionShape2D" parent="Walls" unique_id=778952621]
-position = Vector2(640, 0)
+position = Vector2(512, 0)
 shape = SubResource("WorldBoundaryShape2D_jjb4j")
 
 [node name="Grass" type="Area2D" parent="." unique_id=1208187941]
 collision_layer = 0
 
 [node name="Left edge" type="CollisionShape2D" parent="Grass" unique_id=1785361138]
-position = Vector2(-480, 0)
+position = Vector2(-380, 0)
 shape = SubResource("WorldBoundaryShape2D_fy6l0")
 
 [node name="Right edge" type="CollisionShape2D" parent="Grass" unique_id=406990892]
-position = Vector2(480, 0)
+position = Vector2(380, 0)
 shape = SubResource("WorldBoundaryShape2D_y6deb")
