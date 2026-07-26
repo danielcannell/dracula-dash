@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://s6f15w0vbsdc" path="res://art/coffin_lid.png" id="5_m0uiu"]
 [ext_resource type="AudioStream" uid="uid://8sbesukidbmk" path="res://audio/Hit1.wav" id="5_x2wbg"]
 [ext_resource type="Texture2D" uid="uid://bnmd3x8tjqsl3" path="res://art/coffin_ropes.png" id="6_iu7kl"]
+[ext_resource type="Texture2D" uid="uid://bml7vsvhdgpn7" path="res://art/ambulance-shadow.png" id="7_nt45e"]
 [ext_resource type="Texture2D" uid="uid://dn5kv3idhg3s0" path="res://art/ambulance-blood.png" id="10_6ncrl"]
 [ext_resource type="Script" uid="uid://vvmrmk0muynt" path="res://scripts/ambulance_blood_sprite.gd" id="11_26xou"]
 
@@ -202,6 +203,11 @@ sprite_frames = SubResource("SpriteFrames_jjb4j")
 animation = &"immune_loop"
 autoplay = "default"
 script = ExtResource("4_iu7kl")
+
+[node name="Shadow" type="Sprite2D" parent="AnimatedSprite2D" unique_id=272559816]
+show_behind_parent = true
+texture = ExtResource("7_nt45e")
+offset = Vector2(0, -16)
 
 [node name="BloodSprite" type="AnimatedSprite2D" parent="AnimatedSprite2D" unique_id=133766064]
 sprite_frames = SubResource("SpriteFrames_ky4ls")
