@@ -33,7 +33,7 @@ func _on_pure_timeout():
 		$BloodyTrail.add_point(last_point)
 	bloody_timer_gradient.start(2)
 	state = GRADIENT
-	
+
 func _on_gradient_timeout():
 	if state != BLACK:
 		clear_points()
