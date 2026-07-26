@@ -48,6 +48,7 @@ func _apply_bounce_offset(delta: float) -> void:
 func on_hit():
 	is_hit = true
 	$CollisionShape2D.set_deferred("disabled", true)
+	$SoundHit.play()
 	await get_tree().create_timer(0.2).timeout
 	queue_free()
 
