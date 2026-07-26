@@ -37,7 +37,7 @@ func post_score():
 	if name == "":
 		return
 
-	var err = $HTTPRequest.request(SCORES_URL, ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"name": name, "score": score}))
+	var err = $HTTPRequest.request(SCORES_URL, ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"name": name, "score": score, "death_pos_x": 0.0, "death_pos_y": 0.0}))
 	if err == Error.OK:
 		$ColorRect/VBoxContainer/HBoxContainer.visible = false
 		http_state = HTTPState.POST
