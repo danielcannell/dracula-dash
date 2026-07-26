@@ -34,7 +34,7 @@ const HIT_DAMAGE = 10.0
 const SMALL_BOUNCE_STRENGTH = 200.0
 const IMMUNE_TIMER = 3
 
-enum State { NORMAL, STUNNED }
+enum State { NORMAL, STUNNED, DEAD }
 
 var angle: float = 0
 var blood_level: float = 100
@@ -52,14 +52,21 @@ func _ready() -> void:
 		wheel_trails.append(scene)
 		trail_container.add_child(scene)
 
+func _on_dead() -> void:
+	state = State.DEAD
+	$CollisionShape2D.disabled = true
+	Globals.cur_forward_speed = 0
+	dead.emit()
+
 func add_blood(amount: float) -> void:
-	blood_level += amount
-	if blood_level > 100.0:
-		blood_level = 100.0
-	if blood_level <= 0:
-		blood_level = 0
-		emit_signal("dead")
-	emit_signal("blood", blood_level)
+	if state != State.DEAD:
+		blood_level += amount
+		if blood_level > 100.0:
+			blood_level = 100.0
+		if blood_level <= 0:
+			blood_level = 0
+			_on_dead()
+		blood.emit(blood_level)
 
 func _process(delta: float) -> void:
 	add_blood(-delta * BLOOD_DRAIN_RATE)
@@ -71,6 +78,8 @@ func _physics_process(delta: float) -> void:
 			_process_wheel_trail()
 		State.STUNNED:
 			_stunned_movement(delta)
+		State.DEAD:
+			return
 
 	for i in range(len(wheels)):
 		var pos = wheels[i].global_position - trail_container.position
@@ -112,8 +121,8 @@ func _normal_movement(delta: float) -> void:
 		var collider = collision.get_collider()
 		print("collision")
 		if collider.is_in_group("obstacles"):
-			_on_hit(collision)
 			hit.emit(collider)
+			_on_hit(collision)
 			break
 		elif collider.is_in_group("children"):
 			hit_bloody.emit(collider)
@@ -150,7 +159,7 @@ func _on_hit(collision: KinematicCollision2D) -> void:
 	state = State.STUNNED
 	bounce_velocity = collision.get_normal() * BOUNCE_STRENGTH
 
-	blood_level -= HIT_DAMAGE
+	add_blood(-HIT_DAMAGE)
 
 	Globals.cur_forward_speed = 0.0
 	stunned.emit(true)

@@ -60,6 +60,6 @@ func _input(event: InputEvent) -> void:
 	Globals.check_gamepad_active(event)
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_X:
-			$Dracula.dead.emit()
+			$Dracula._on_dead()
 		if event.pressed and event.keycode == KEY_B:
 			_on_spawn_explode(get_viewport().get_mouse_position())
