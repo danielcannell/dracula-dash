@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends StaticBody2D
 
 @export var tractor_texture: Texture2D
 @export var speed := 40.0
@@ -12,18 +12,12 @@ var nudge_offset := Vector2.ZERO
 func _ready():
 	add_to_group("obstacles")
 	add_to_group("tractors")
+	$HitArea.body_entered.connect(_on_hit_area_body_entered)
 
 func _physics_process(delta: float) -> void:
 	var closing_speed = Globals.cur_forward_speed - speed
-	velocity = Vector2(0, closing_speed)
-	move_and_slide()
+	position += Vector2(0, closing_speed) * delta
 	_apply_nudge(delta)
-
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-		var collider = collision.get_collider()
-		if collider.is_in_group("cyclists") or collider.is_in_group("children"):
-			on_hit.emit(collider)
 
 	if position.y > 1000:
 		queue_free()
@@ -35,3 +29,7 @@ func _apply_nudge(delta: float) -> void:
 
 func nudge(direction: Vector2) -> void:
 	nudge_offset = direction.normalized() * nudge_strength
+
+func _on_hit_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("cyclists") or body.is_in_group("children"):
+		on_hit.emit(body)

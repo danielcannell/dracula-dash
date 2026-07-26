@@ -186,7 +186,16 @@ func hit_by_pope() -> void:
 func _on_hit(collision: KinematicCollision2D) -> void:
 	$Audio/Obstacle_Hit.play()
 	state = State.STUNNED
-	bounce_velocity = collision.get_normal() * BOUNCE_STRENGTH
+
+	var normal = collision.get_normal()
+	bounce_velocity = normal * BOUNCE_STRENGTH
+
+	if abs(normal.x) < 0.3:
+		var collider = collision.get_collider()
+		var side = sign(global_position.x - collider.global_position.x)
+		if side == 0:
+			side = 1 if randf() < 0.5 else -1
+		bounce_velocity.x += side * BOUNCE_STRENGTH * 0.6
 
 	add_blood(-HIT_DAMAGE)
 
