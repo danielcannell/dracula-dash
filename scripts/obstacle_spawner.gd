@@ -97,6 +97,8 @@ func _spawn_single(scene: PackedScene):
 	var obstacle = scene.instantiate()
 	var lane_x = lane_positions[randi() % lane_positions.size()]
 	obstacle.position = Vector2(lane_x, SPAWN_Y)
+	if obstacle.has_signal("on_hit"):
+		obstacle.on_hit.connect(on_pope_hit.emit)
 	add_child(obstacle)
 
 func _spawn_pope(lane):

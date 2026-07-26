@@ -3,10 +3,11 @@
 [ext_resource type="Script" uid="uid://l3rodwd5j1ic" path="res://scripts/tractor.gd" id="1_01n4e"]
 [ext_resource type="Texture2D" uid="uid://d1enq3pbwmlk7" path="res://art/tractor.png" id="1_l70t5"]
 
-[node name="Tractor" type="StaticBody2D" unique_id=115594489]
+[node name="Tractor" type="CharacterBody2D" unique_id=304580630]
+z_index = 1
 scale = Vector2(4, 4)
-collision_layer = 2
-collision_mask = 0
+collision_layer = 32
+collision_mask = 5
 script = ExtResource("1_01n4e")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=424027310]
