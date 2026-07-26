@@ -19,6 +19,12 @@ func _ready() -> void:
 	get_leaderboard()
 
 
+func on_show() -> void:
+	if Globals.gamepad_active:
+		$ColorRect/VBoxContainer/HBoxContainer/SubmitButton.grab_focus()
+	visible = true
+
+
 func set_score(new_score: int):
 	score = new_score
 	$ColorRect/VBoxContainer/HBoxContainer.visible = true
@@ -37,7 +43,7 @@ func post_score():
 	if name == "":
 		return
 
-	var err = $HTTPRequest.request(SCORES_URL, ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"name": name, "score": score}))
+	var err = $HTTPRequest.request(SCORES_URL, ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"name": name, "score": score, "death_pos_x": 0.0, "death_pos_y": 0.0}))
 	if err == Error.OK:
 		$ColorRect/VBoxContainer/HBoxContainer.visible = false
 		http_state = HTTPState.POST

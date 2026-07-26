@@ -59,6 +59,7 @@ text = "Submit"
 [node name="Restart" type="Button" parent="ColorRect/VBoxContainer" unique_id=2054791336]
 layout_mode = 2
 size_flags_vertical = 4
+focus_neighbor_top = NodePath("../HBoxContainer/SubmitButton")
 text = "Restart"
 
 [node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=698637857]

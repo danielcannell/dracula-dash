@@ -37,10 +37,12 @@ type server struct {
 }
 
 type scoreEntry struct {
-	Rank    int    `json:"rank"`
-	Name    string `json:"name"`
-	Score   int64  `json:"score"`
-	Created int64  `json:"created"`
+	Rank      int     `json:"rank"`
+	Name      string  `json:"name"`
+	Score     int64   `json:"score"`
+	DeathPosX float64 `json:"death_pos_x"`
+	DeathPosY float64 `json:"death_pos_y"`
+	Created   int64   `json:"created"`
 }
 
 func main() {
@@ -123,10 +125,12 @@ func openDB(path string) (*sql.DB, error) {
 
 	const schema = `
 		CREATE TABLE IF NOT EXISTS scores (
-			id 		INTEGER PRIMARY KEY AUTOINCREMENT,
-			name 	TEXT 	NOT NULL,
-			score 	INTEGER NOT NULL,
-			created INTEGER NOT NULL
+			id          INTEGER PRIMARY KEY AUTOINCREMENT,
+			name        TEXT 	NOT NULL,
+			score       INTEGER NOT NULL,
+			death_pos_x REAL    NOT NULL,
+			death_pos_y REAL    NOT NULL,
+			created     INTEGER NOT NULL
 		);
 		CREATE INDEX IF NOT EXISTS scores_by_score ON scores (score DESC, created ASC);
 	`
@@ -158,7 +162,7 @@ func (s *server) listScores(w http.ResponseWriter, r *http.Request) {
 	defer cancel()
 
 	rows, err := s.db.QueryContext(ctx, `
-		SELECT name, score, created FROM scores
+		SELECT name, score, death_pos_x, death_pos_y, created FROM scores
 		ORDER BY score DESC, created ASC
 		LIMIT ?`, limit)
 	if err != nil {
@@ -171,7 +175,7 @@ func (s *server) listScores(w http.ResponseWriter, r *http.Request) {
 	entries := make([]scoreEntry, 0, limit)
 	for rows.Next() {
 		var e scoreEntry
-		if err := rows.Scan(&e.Name, &e.Score, &e.Created); err != nil {
+		if err := rows.Scan(&e.Name, &e.Score, &e.DeathPosX, &e.DeathPosY, &e.Created); err != nil {
 			log.Printf("scan score row: %v", err)
 			writeError(w, http.StatusInternalServerError, "could not read scores")
 			return
@@ -196,8 +200,10 @@ func (s *server) createScore(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var body struct {
-		Name  *string `json:"name"`
-		Score *int64  `json:"score"`
+		Name      *string  `json:"name"`
+		Score     *int64   `json:"score"`
+		DeathPosX *float64 `json:"death_pos_x"`
+		DeathPosY *float64 `json:"death_pos_y"`
 	}
 	dec := json.NewDecoder(http.MaxBytesReader(w, r.Body, maxBodyBytes))
 	dec.DisallowUnknownFields()
@@ -205,8 +211,8 @@ func (s *server) createScore(w http.ResponseWriter, r *http.Request) {
 		writeError(w, http.StatusBadRequest, "request body must be JSON: "+err.Error())
 		return
 	}
-	if body.Name == nil || body.Score == nil {
-		writeError(w, http.StatusBadRequest, `both "name" and "score" are required`)
+	if body.Name == nil || body.Score == nil || body.DeathPosX == nil || body.DeathPosY == nil {
+		writeError(w, http.StatusBadRequest, `all fields are required`)
 		return
 	}
 
@@ -216,6 +222,7 @@ func (s *server) createScore(w http.ResponseWriter, r *http.Request) {
 			fmt.Sprintf("name must be 1-%d printable characters", maxNameLen))
 		return
 	}
+
 	score := *body.Score
 	if score < 0 || score > maxScore {
 		writeError(w, http.StatusBadRequest,
@@ -223,12 +230,15 @@ func (s *server) createScore(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	deathPosX := body.DeathPosX
+	deathPosY := body.DeathPosY
+
 	ctx, cancel := context.WithTimeout(r.Context(), requestTimeout)
 	defer cancel()
 
 	res, err := s.db.ExecContext(ctx,
-		`INSERT INTO scores (name, score, created) VALUES (?, ?, ?)`,
-		name, score, time.Now().Unix())
+		`INSERT INTO scores (name, score, death_pos_x, death_pos_y, created) VALUES (?, ?, ?, ?, ?)`,
+		name, score, deathPosX, deathPosY, time.Now().Unix())
 	if err != nil {
 		log.Printf("insert score: %v", err)
 		writeError(w, http.StatusInternalServerError, "could not save score")
