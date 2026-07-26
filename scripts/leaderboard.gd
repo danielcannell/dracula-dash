@@ -21,6 +21,7 @@ func _ready() -> void:
 
 func set_score(new_score: int):
 	score = new_score
+	$ColorRect/VBoxContainer/HBoxContainer.visible = true
 
 
 func post_score():
@@ -114,6 +115,8 @@ func get_leaderboard():
 
 
 func _on_submit_button_pressed() -> void:
+	$ColorRect/VBoxContainer/HBoxContainer.visible = false
+
 	do_post = true
 	do_get = true
 	next_request()
