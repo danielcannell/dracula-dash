@@ -51,9 +51,9 @@ func _ready() -> void:
 		var scene = trail_scene.instantiate()
 		wheel_trails.append(scene)
 		trail_container.add_child(scene)
-	
+
 		hit_bloody.connect(
-			func (obj): 
+			func (obj):
 				scene.make_bloody())
 
 func _on_dead() -> void:
@@ -142,12 +142,10 @@ func _normal_movement(delta: float) -> void:
 
 func _immune_on_hit():
 	$AnimatedSprite2D.play("immune_start")
+	var old_mask = collision_mask
 	collision_mask = 0
-	var timer = get_tree().create_timer(IMMUNE_TIMER)
-	timer.timeout.connect(_immune_timeout)
-
-func _immune_timeout():
-	collision_mask = 1
+	await get_tree().create_timer(IMMUNE_TIMER).timeout
+	collision_mask = old_mask
 	$AnimatedSprite2D.play("immune_stop")
 
 
