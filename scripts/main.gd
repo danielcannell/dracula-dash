@@ -24,7 +24,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if not dead:
-		score += delta
+		score += delta * (Globals.cur_forward_speed / 200) ** 2
 		score_update.emit(round(score))
 
 func _on_pope_hit(object: StaticBody2D) -> void:
