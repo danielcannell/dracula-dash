@@ -16,7 +16,7 @@ func _input(event: InputEvent) -> void:
 		$Menu/Buttons/Start.grab_focus.call_deferred()
 	elif not Globals.gamepad_active and joy_was_active:
 		$Menu/Buttons/Start.release_focus()
-		$Menu/Buttons/End.release_focus()
+		$Menu/Buttons/Exit.release_focus()
 	joy_was_active = Globals.gamepad_active
 
 
