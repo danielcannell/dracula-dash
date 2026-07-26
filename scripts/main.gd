@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 		score += delta * (Globals.cur_forward_speed / 200) ** 2
 		score_update.emit(round(score))
 
-func _on_pope_hit(object: StaticBody2D) -> void:
+func _on_pope_hit(object: PhysicsBody2D) -> void:
 	if object.is_in_group("children") or object.is_in_group("cyclists"):
 		$SplatSpawner.make_splat(object.global_position)
 		object.on_hit()
@@ -37,12 +37,15 @@ func _on_pope_hit(object: StaticBody2D) -> void:
 			explosion_texture = object.get_explosion_texture()
 
 		_on_spawn_explode(object.global_position - Vector2(0, 20), explosion_texture)
+	elif object.is_in_group("player"):
+		$Dracula.hit_by_pope()
+		$Dracula/CollisionShape2D.disabled = true
 
-func _on_hit(_object: StaticBody2D) -> void:
+func _on_hit(_object: PhysicsBody2D) -> void:
 	if Globals.gamepad_active:
 		Input.start_joy_vibration(0, 0.0, 1.0, 0.5)
 
-func _on_hit_bloody(object: StaticBody2D) -> void:
+func _on_hit_bloody(object: PhysicsBody2D) -> void:
 	if Globals.gamepad_active:
 		Input.start_joy_vibration(0, 1.0, 0.0, 0.5)
 	$SplatSpawner.make_splat(object.global_position)

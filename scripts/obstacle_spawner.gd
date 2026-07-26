@@ -11,7 +11,7 @@ extends Node2D
 @export var spawn_interval_max := 300 * 1.8
 @export var peloton_chance := 0.5
 
-signal on_pope_hit(object: StaticBody2D)
+signal on_pope_hit(object: PhysicsBody2D)
 
 const NUM_LANES := 4
 const BORDER_MARGIN := 175.0
