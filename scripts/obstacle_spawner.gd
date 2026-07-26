@@ -46,6 +46,7 @@ func _on_pope_timeout():
 	warning.position = Vector2(lane_x, WARNING_Y);
 	warning.timeout.connect(func (): _spawn_pope(lane))
 	warning.timeout.connect(warning.queue_free)
+	warning.z_index = 50
 	add_child(warning)
 	$PopeTimer.start(randf_range(5.0, 15.0))
 

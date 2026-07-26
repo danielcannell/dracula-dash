@@ -6,7 +6,8 @@ extends Node2D
 # spawn a player at a position
 func spawn_dead_player(name: String, pos: Vector2):
 	var inst = dead_player.instantiate()
-	inst.set_name(name)
+	inst.set_label_text(name)
+	inst.position = pos
 	add_child(inst)
 
 
@@ -18,3 +19,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func _on_death_positions(deaths: Array) -> void:
+	for death in deaths:
+		spawn_dead_player(death["name"], death["pos"])

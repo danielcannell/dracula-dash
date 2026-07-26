@@ -44,6 +44,7 @@ var blood_level: float = 100
 var state := State.NORMAL
 var bounce_velocity := Vector2.ZERO
 var base_pos: Vector2
+var on_grass := false
 
 func _ready() -> void:
 	add_to_group("player")
@@ -58,6 +59,12 @@ func _ready() -> void:
 		hit_bloody.connect(
 			func (obj):
 				scene.make_bloody())
+
+func on_entered_grass() -> void:
+	on_grass = true
+
+func on_exited_grass() -> void:
+	on_grass = false
 
 func _on_dead() -> void:
 	state = State.DEAD
@@ -93,6 +100,9 @@ func _physics_process(delta: float) -> void:
 		var pos = wheels[i].global_position - trail_container.position
 		_extend_trail(wheel_trails[i], pos)
 
+	Globals.cur_position.x = position.x
+	Globals.cur_position.y += -delta * Globals.cur_forward_speed
+
 func _process_wheel_trail():
 	for i in range(len(wheels)):
 		var pos = wheels[i].global_position - trail_container.position
@@ -109,6 +119,8 @@ func _normal_movement(delta: float) -> void:
 	var dodge_force = dodge * 100
 
 	var boost_scale = 10 if dodge_return_force < 0 else 2
+	if dodge_return_force < 0 and on_grass:
+		boost_scale = 3
 
 	Globals.cur_forward_speed = 300.0 - dodge_return_force * boost_scale
 

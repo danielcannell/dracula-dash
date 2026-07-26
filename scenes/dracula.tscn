@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://s6f15w0vbsdc" path="res://art/coffin_lid.png" id="5_m0uiu"]
 [ext_resource type="AudioStream" uid="uid://8sbesukidbmk" path="res://audio/Hit1.wav" id="5_x2wbg"]
 [ext_resource type="Texture2D" uid="uid://bnmd3x8tjqsl3" path="res://art/coffin_ropes.png" id="6_iu7kl"]
+[ext_resource type="Texture2D" uid="uid://dn5kv3idhg3s0" path="res://art/ambulance-blood.png" id="10_6ncrl"]
+[ext_resource type="Script" uid="uid://vvmrmk0muynt" path="res://scripts/ambulance_blood_sprite.gd" id="11_26xou"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_42sh8"]
 atlas = ExtResource("2_42sh8")
@@ -131,6 +133,56 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3riew"]
+atlas = ExtResource("10_6ncrl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rpfw"]
+atlas = ExtResource("10_6ncrl")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4smoh"]
+atlas = ExtResource("10_6ncrl")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ym1nt"]
+atlas = ExtResource("10_6ncrl")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5fbt"]
+atlas = ExtResource("10_6ncrl")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgxxc"]
+atlas = ExtResource("10_6ncrl")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ky4ls"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3riew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rpfw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4smoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ym1nt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x5fbt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgxxc")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_0wfyh"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mr007"]
@@ -150,6 +202,11 @@ sprite_frames = SubResource("SpriteFrames_jjb4j")
 animation = &"immune_start"
 autoplay = "default"
 script = ExtResource("4_iu7kl")
+
+[node name="BloodSprite" type="AnimatedSprite2D" parent="AnimatedSprite2D" unique_id=133766064]
+sprite_frames = SubResource("SpriteFrames_ky4ls")
+autoplay = "default"
+script = ExtResource("11_26xou")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1269495273]
 shape = SubResource("CircleShape2D_0wfyh")
@@ -210,4 +267,5 @@ max_bounce_offset = 6.0
 [node name="Lid" type="Sprite2D" parent="CoffinContainer/Coffin/LidHinge" unique_id=1717016256]
 texture = ExtResource("5_m0uiu")
 
+[connection signal="hit_bloody" from="." to="AnimatedSprite2D/BloodSprite" method="on_step"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_animation_finished"]
