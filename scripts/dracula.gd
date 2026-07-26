@@ -126,6 +126,8 @@ func _normal_movement(delta: float) -> void:
 		if collider.is_in_group("obstacles"):
 			hit.emit(collider)
 			_on_hit(collision)
+			if collider.has_method("nudge"):
+				collider.nudge(-collision.get_normal())
 			break
 		elif collider.is_in_group("children"):
 			hit_bloody.emit(collider)

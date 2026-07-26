@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://63fqho26pc44" path="res://scripts/score.gd" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://bhgbngwl4lkf6" path="res://scenes/leaderboard.tscn" id="12_0ld40"]
 [ext_resource type="PackedScene" uid="uid://btsebu8rlaklm" path="res://scenes/pope_warning.tscn" id="12_yc10j"]
+[ext_resource type="PackedScene" uid="uid://wiyciksx6sti" path="res://scenes/tractor.tscn" id="13_jscy8"]
 [ext_resource type="Texture2D" uid="uid://5f11y4eqk15u" path="res://art/blooddrop.png" id="13_trceg"]
 [ext_resource type="Script" uid="uid://db3qne3trfobw" path="res://scripts/audio.gd" id="15_jkv2x"]
 [ext_resource type="AudioStream" uid="uid://d3ijff0tu3x1w" path="res://audio/main_song.wav" id="16_jbj1t"]
@@ -73,6 +74,7 @@ cyclist_scene = ExtResource("9_0ld40")
 powerup_scene = ExtResource("9_jkv2x")
 popemobile_scene = ExtResource("11_gqmmt")
 popemobile_warning = ExtResource("12_yc10j")
+tractor_scene = ExtResource("13_jscy8")
 
 [node name="PopeTimer" type="Timer" parent="ObstacleSpawner" unique_id=1702194629]
 one_shot = true
