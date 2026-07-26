@@ -85,7 +85,7 @@ func _on_spawn_explode(pos: Vector2, texture: Texture2D = null):
 
 func _input(event: InputEvent) -> void:
 	Globals.check_gamepad_active(event)
-	if event is InputEventKey:
+	if event is InputEventKey and OS.has_feature("editor"):
 		if event.pressed and event.keycode == KEY_X:
 			$Dracula._on_dead()
 		if event.pressed and event.keycode == KEY_B:
