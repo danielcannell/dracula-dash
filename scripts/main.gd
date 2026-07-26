@@ -81,6 +81,7 @@ func _on_spawn_explode(pos: Vector2, texture: Texture2D = null):
 	explosion.translate(pos)
 	if texture:
 		explosion.texture = texture
+		explosion.amount = 20
 	explosion.restart()
 
 func _input(event: InputEvent) -> void:
