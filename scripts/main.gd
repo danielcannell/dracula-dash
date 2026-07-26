@@ -10,6 +10,7 @@ var dead: bool = false
 
 func _on_dead() -> void:
 	dead = true
+	$CanvasLayer/UI/VirtualJoystick.visible = false
 
 
 # Called when the node enters the scene tree for the first time.
