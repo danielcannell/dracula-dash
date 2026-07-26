@@ -19,6 +19,12 @@ func _ready() -> void:
 	$Dracula.hit_bloody.connect(_on_hit_bloody)
 	$Dracula.hit_powerup.connect(func (obj): obj.on_hit())
 
+	$Backend.leaderboard_updated.connect(self._on_leaderboard_updated)
+	$Backend.get_leaderboard()
+
+func _on_leaderboard_updated(leaderboard: Dictionary):
+	print("Leaderboard: ", leaderboard)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if not dead:
