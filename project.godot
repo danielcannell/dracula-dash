@@ -14,7 +14,7 @@ config/name="Dracula Dash"
 run/main_scene="uid://dj4eligatwfaw"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
-<<<<<<<Updatedupstreamrun/main_scene="uid://dj4eligatwfaw"
+run/main_scene="uid://dj4eligatwfaw"
 
 [autoload]
 
@@ -84,6 +84,7 @@ sirens={
 2d_physics/layer_3="children"
 2d_physics/layer_4="powerups"
 2d_physics/layer_5="walls"
+2d_physics/layer_6="tractors"
 
 [physics]
 

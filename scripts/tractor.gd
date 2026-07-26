@@ -11,6 +11,7 @@ var nudge_offset := Vector2.ZERO
 
 func _ready():
 	add_to_group("obstacles")
+	add_to_group("tractors")
 
 func _physics_process(delta: float) -> void:
 	var closing_speed = Globals.cur_forward_speed - speed

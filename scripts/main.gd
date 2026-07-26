@@ -1,5 +1,6 @@
 extends Node
 
+@export var explosion: PackedScene;
 signal score_update(score: int)
 
 
@@ -50,6 +51,13 @@ func _on_pope_hit(object: PhysicsBody2D) -> void:
 	elif object.is_in_group("player"):
 		$Dracula.hit_by_pope()
 		$Dracula/CollisionShape2D.disabled = true
+		
+	elif object.is_in_group("tractors"):
+		var inst = explosion.instantiate()
+		inst.position = object.position
+		add_child(inst)
+		object.queue_free()
+		
 
 func _on_hit(_object: PhysicsBody2D) -> void:
 	if Globals.gamepad_active:
@@ -83,6 +91,15 @@ func _input(event: InputEvent) -> void:
 			$Dracula._on_dead()
 		if event.pressed and event.keycode == KEY_B:
 			_on_spawn_explode(get_viewport().get_mouse_position())
+		if event.pressed and event.keycode == KEY_1:
+			$ObstacleSpawner._spawn_pope(0)
+		if event.pressed and event.keycode == KEY_2:
+			$ObstacleSpawner._spawn_pope(1)
+		if event.pressed and event.keycode == KEY_3:
+			$ObstacleSpawner._spawn_pope(2)
+		if event.pressed and event.keycode == KEY_4:
+			$ObstacleSpawner._spawn_pope(3)
+			
 
 func _on_death_show_leaderboard() -> void:
 	$Death.visible = false
