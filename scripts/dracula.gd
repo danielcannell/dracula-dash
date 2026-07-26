@@ -25,7 +25,8 @@ signal stunned(stun: bool)
 
 const TURN_TIME_SCALE_S = 0.1
 const SPEED = 1000
-const BLOOD_DRAIN_RATE = 5
+const BASE_BLOOD_DRAIN_RATE = 5
+const DRAIN_RATE_DELTA = 0.25
 const STUN_DURATION = 0.6
 const BOUNCE_STRENGTH = 400.0
 const BOUNCE_DECAY = 1000.0
@@ -38,6 +39,7 @@ const IMMUNE_TIMER = 3
 enum State { NORMAL, STUNNED, DEAD }
 
 var angle: float = 0
+var cur_blood_drain_rate: float = BASE_BLOOD_DRAIN_RATE
 var blood_level: float = 100
 var state := State.NORMAL
 var bounce_velocity := Vector2.ZERO
@@ -74,7 +76,8 @@ func add_blood(amount: float) -> void:
 		blood.emit(blood_level)
 
 func _process(delta: float) -> void:
-	add_blood(-delta * BLOOD_DRAIN_RATE)
+	add_blood(-delta * cur_blood_drain_rate)
+	cur_blood_drain_rate += delta * DRAIN_RATE_DELTA
 
 func _physics_process(delta: float) -> void:
 	match state:
@@ -127,6 +130,8 @@ func _normal_movement(delta: float) -> void:
 		if collider.is_in_group("obstacles"):
 			hit.emit(collider)
 			_on_hit(collision)
+			if collider.has_method("nudge"):
+				collider.nudge(-collision.get_normal())
 			break
 		elif collider.is_in_group("children"):
 			hit_bloody.emit(collider)

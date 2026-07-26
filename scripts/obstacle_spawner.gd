@@ -6,6 +6,7 @@ extends Node2D
 @export var powerup_scene: PackedScene
 @export var popemobile_scene: PackedScene
 @export var popemobile_warning: PackedScene
+@export var tractor_scene: PackedScene
 
 @export var spawn_interval_min := 300 * 0.5
 @export var spawn_interval_max := 300 * 1.8
@@ -21,10 +22,11 @@ const WARNING_Y := 250.0
 
 @onready
 var spawn_table = [
-	[0.4, obstacle_scene],
+	[0.3, obstacle_scene],
 	[0.2, child_scene],
-	[0.3, cyclist_scene],
+	[0.25, cyclist_scene],
 	[0.1, powerup_scene],
+	[0.15, tractor_scene]
 ]
 
 var lane_positions: Array[float] = []

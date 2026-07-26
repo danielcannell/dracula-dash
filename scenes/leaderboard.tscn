@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cve2hn8s3hdac" path="res://scripts/leaderboard.gd" id="1_mrg81"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_sin48"]
+font_size = 30
+
 [node name="Leaderboard" type="CanvasLayer" unique_id=162506559]
 script = ExtResource("1_mrg81")
 
@@ -32,6 +35,7 @@ size_flags_vertical = 4
 [node name="LeaderboardLabel" type="Label" parent="ColorRect/VBoxContainer" unique_id=730126092]
 layout_mode = 2
 text = "Leaderboard"
+label_settings = SubResource("LabelSettings_sin48")
 horizontal_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="ColorRect/VBoxContainer" unique_id=1658112866]
