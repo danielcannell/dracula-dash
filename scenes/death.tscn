@@ -61,4 +61,11 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Restart"
 
+[node name="Leaderbaord" type="Button" parent="ColorRect/VBoxContainer" unique_id=704033634]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Leaderboard"
+
 [connection signal="pressed" from="ColorRect/VBoxContainer/Restart" to="." method="_on_restart"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Leaderbaord" to="." method="_on_leaderbaord_pressed"]

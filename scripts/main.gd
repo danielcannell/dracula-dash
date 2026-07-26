@@ -19,8 +19,6 @@ func _ready() -> void:
 	$Dracula.hit_bloody.connect(_on_hit_bloody)
 	$Dracula.hit_powerup.connect(func (obj): obj.on_hit())
 
-	$Backend.leaderboard_updated.connect(self._on_leaderboard_updated)
-	$Backend.get_leaderboard()
 
 func _on_leaderboard_updated(leaderboard: Dictionary):
 	print("Leaderboard: ", leaderboard)
@@ -63,3 +61,7 @@ func _input(event: InputEvent) -> void:
 			$Dracula._on_dead()
 		if event.pressed and event.keycode == KEY_B:
 			_on_spawn_explode(get_viewport().get_mouse_position())
+
+func _on_death_show_leaderboard() -> void:
+	$Death.visible = false
+	$Leaderboard.visible = true

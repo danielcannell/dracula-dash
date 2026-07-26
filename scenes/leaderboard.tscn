@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://bhgbngwl4lkf6"]
+
+[ext_resource type="Script" uid="uid://cve2hn8s3hdac" path="res://scripts/leaderboard.gd" id="1_mrg81"]
+
+[node name="Leaderboard" type="CanvasLayer" unique_id=162506559]
+script = ExtResource("1_mrg81")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1855744650]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7764706)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect" unique_id=667066681]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -249.5
+offset_right = 208.0
+offset_bottom = 249.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="LeaderboardLabel" type="Label" parent="ColorRect/VBoxContainer" unique_id=730126092]
+layout_mode = 2
+text = "Leaderbaord"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="ColorRect/VBoxContainer" unique_id=1658112866]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 50
+columns = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer" unique_id=111344942]
+layout_mode = 2
+
+[node name="NameLineEdit" type="LineEdit" parent="ColorRect/VBoxContainer/HBoxContainer" unique_id=1964334804]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Name"
+
+[node name="SubmitButton" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer" unique_id=1790401227]
+layout_mode = 2
+text = "Submit"
+
+[node name="Restart" type="Button" parent="ColorRect/VBoxContainer" unique_id=2054791336]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Restart"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=698637857]

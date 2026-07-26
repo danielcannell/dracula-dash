@@ -3,6 +3,9 @@ extends CanvasLayer
 var cur_scale = 0.0
 
 
+signal show_leaderboard()
+
+
 func _ready():
 	visible = false
 
@@ -23,3 +26,6 @@ func _process(delta):
 func _on_restart():
 	visible = false
 	get_tree().reload_current_scene()
+
+func _on_leaderbaord_pressed() -> void:
+	show_leaderboard.emit()
