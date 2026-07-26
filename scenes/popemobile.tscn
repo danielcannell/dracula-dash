@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://335816j0mm7u"]
+
+[ext_resource type="Texture2D" uid="uid://brybx81716dyk" path="res://art/popemobile.png" id="1_e3yjf"]
+[ext_resource type="Script" uid="uid://c0v7gblvew5tu" path="res://scripts/popemobile.gd" id="1_oyyen"]
+[ext_resource type="Texture2D" uid="uid://bsx4smd1uoao4" path="res://art/popemobile_pope.png" id="2_oyyen"]
+[ext_resource type="Script" uid="uid://bixvsbipcb8ym" path="res://scripts/coffin.gd" id="3_d4wbj"]
+[ext_resource type="Texture2D" uid="uid://dvpmjq2e55u43" path="res://art/popemobile_cage.png" id="4_pcvcw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2qwq6"]
+height = 40.0
+
+[node name="Popemobile" type="CharacterBody2D" unique_id=265364882]
+script = ExtResource("1_oyyen")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=27185193]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_2qwq6")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1482583321]
+scale = Vector2(5, 5)
+
+[node name="Mobile" type="Sprite2D" parent="Node2D" unique_id=2067669321]
+texture = ExtResource("1_e3yjf")
+
+[node name="Pope" type="Sprite2D" parent="Node2D" unique_id=1893393195 node_paths=PackedStringArray("car")]
+texture = ExtResource("2_oyyen")
+script = ExtResource("3_d4wbj")
+car = NodePath("../..")
+
+[node name="Cage" type="Sprite2D" parent="Node2D" unique_id=753701453]
+texture = ExtResource("4_pcvcw")

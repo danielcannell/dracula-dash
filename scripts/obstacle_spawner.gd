@@ -4,6 +4,8 @@ extends Node2D
 @export var child_scene: PackedScene
 @export var cyclist_scene: PackedScene
 @export var powerup_scene: PackedScene
+@export var popemobile_scene: PackedScene
+@export var popemobile_warning: PackedScene
 
 @export var spawn_interval_min := 300 * 0.5
 @export var spawn_interval_max := 300 * 1.8
@@ -29,6 +31,14 @@ var right_bound: float
 func _ready():
 	_setup_lanes()
 	_start_next_spawn_timer()
+	$PopeTimer.timeout.connect(_on_pope_timeout)
+
+func _on_pope_timeout():
+	print("Timeout")
+	var lane_x = lane_positions[randi() % lane_positions.size()]
+	var warning = popemobile_warning.instantiate()
+	warning.position = Vector2(lane_x, 10);
+	add_child(warning)
 
 func _physics_process(delta: float) -> void:
 	next_spawn -= delta * Globals.cur_forward_speed
@@ -78,6 +88,12 @@ func _spawn_single(scene: PackedScene):
 	var lane_x = lane_positions[randi() % lane_positions.size()]
 	obstacle.position = Vector2(lane_x, SPAWN_Y)
 	add_child(obstacle)
+
+func _spawn_pope():
+	var pope = popemobile_scene.instantiate()
+	var lane_x = lane_positions[randi() % lane_positions.size()]
+	pope.position = Vector2(lane_x, SPAWN_Y)
+	add_child(pope)
 
 func _spawn_peloton(scene: PackedScene):
 	var count = randi_range(2, 4)

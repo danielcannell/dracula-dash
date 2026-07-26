@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://btsebu8rlaklm"]
+
+[ext_resource type="Script" uid="uid://cvcxskhxl6q05" path="res://scripts/pope_warning.gd" id="1_21css"]
+[ext_resource type="Texture2D" uid="uid://cj4447fpm13s2" path="res://art/pope_warning.png" id="2_4q8f2"]
+
+[node name="PopeWarning" type="Node2D" unique_id=281131410]
+scale = Vector2(5, 5)
+script = ExtResource("1_21css")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=736929203]
+texture = ExtResource("2_4q8f2")
+
+[node name="Timer" type="Timer" parent="." unique_id=503470246]
+wait_time = 0.129
+autostart = true
