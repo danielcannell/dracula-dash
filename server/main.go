@@ -19,6 +19,7 @@ import (
 	"unicode"
 	"unicode/utf8"
 
+	goaway "github.com/TwiN/go-away"
 	_ "modernc.org/sqlite"
 )
 
@@ -274,6 +275,9 @@ func cleanName(raw string) (string, bool) {
 		if unicode.IsControl(r) {
 			return "", false
 		}
+	}
+	if goaway.IsProfane(name) {
+		return "", false
 	}
 	return name, true
 }
