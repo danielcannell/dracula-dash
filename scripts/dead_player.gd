@@ -25,11 +25,11 @@ func explode():
 	$AnimatedSprite2D.show()
 	$AnimatedSprite2D.play("explode")
 	$Coffin.hide()
-	
-	
+
+
 	# Wait until the animation plays its last frame and finishes
 	await $AnimatedSprite2D.animation_finished
-	
+
 	# Remove/unload the node from memory and the scene tree
 	queue_free()
 
