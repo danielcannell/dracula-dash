@@ -39,6 +39,7 @@ func post_score():
 
 	var err = $HTTPRequest.request(SCORES_URL, ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"name": name, "score": score}))
 	if err == Error.OK:
+		$ColorRect/VBoxContainer/HBoxContainer.visible = false
 		http_state = HTTPState.POST
 	else:
 		print("http error: ", error_string(err))
@@ -115,8 +116,6 @@ func get_leaderboard():
 
 
 func _on_submit_button_pressed() -> void:
-	$ColorRect/VBoxContainer/HBoxContainer.visible = false
-
 	do_post = true
 	do_get = true
 	next_request()
