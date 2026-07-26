@@ -26,7 +26,7 @@ import (
 const (
 	maxNameLen     = 32
 	maxScore       = 1_000_000_000
-	defaultLimit   = 10
+	defaultLimit   = 100
 	maxLimit       = 100
 	requestTimeout = 5 * time.Second
 	maxBodyBytes   = 4 << 10
