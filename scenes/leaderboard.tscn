@@ -31,7 +31,7 @@ size_flags_vertical = 4
 
 [node name="LeaderboardLabel" type="Label" parent="ColorRect/VBoxContainer" unique_id=730126092]
 layout_mode = 2
-text = "Leaderbaord"
+text = "Leaderboard"
 horizontal_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="ColorRect/VBoxContainer" unique_id=1658112866]
