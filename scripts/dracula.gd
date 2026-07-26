@@ -141,14 +141,14 @@ func _normal_movement(delta: float) -> void:
 
 
 func _immune_on_hit():
-	$AnimatedSprite2D.play("immune")
+	$AnimatedSprite2D.play("immune_start")
 	collision_mask = 0
 	var timer = get_tree().create_timer(IMMUNE_TIMER)
 	timer.timeout.connect(_immune_timeout)
 
 func _immune_timeout():
 	collision_mask = 1
-	$AnimatedSprite2D.play("default")
+	$AnimatedSprite2D.play("immune_stop")
 
 
 func _stunned_movement(delta: float) -> void:
