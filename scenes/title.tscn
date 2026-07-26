@@ -39,3 +39,16 @@ text = "Exit"
 
 [node name="Intro_Music" type="AudioStreamPlayer2D" parent="Audio" unique_id=931182162]
 stream = ExtResource("3_p6dhs")
+
+[node name="Label" type="Label" parent="." unique_id=1164748510]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(160, -140)
+offset_transform_rotation = 0.61784655
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 3
+theme_override_font_sizes/font_size = 15
+text = "Now with papal visits!"
