@@ -166,9 +166,9 @@ func _immune_on_hit():
 	collision_mask = 16
 	collision_layer = 0
 	await get_tree().create_timer(IMMUNE_TIMER).timeout
-	z_index = 0
 	$AnimatedSprite2D.play("immune_stop")
 	await $AnimatedSprite2D.animation_finished
+	z_index = 0
 	collision_mask = old_mask
 	collision_layer = old_layer
 

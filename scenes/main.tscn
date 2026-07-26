@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cgynn8mbyg10c" path="res://scripts/splat_spawner.gd" id="6_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://b3u2bjsc67og3" path="res://scenes/obstacle.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://b06ix0lf0wpck" path="res://scenes/splat.tscn" id="7_tipki"]
+[ext_resource type="PackedScene" uid="uid://b78dwe1woqvi6" path="res://scenes/pothole.tscn" id="8_2f3dj"]
 [ext_resource type="PackedScene" uid="uid://pmefkwdb8566" path="res://scenes/cyclist.tscn" id="9_0ld40"]
 [ext_resource type="Script" uid="uid://cyo43npdhvip7" path="res://scripts/virtual_joystick.gd" id="9_choun"]
 [ext_resource type="PackedScene" uid="uid://kuhf5tfosgyp" path="res://scenes/child.tscn" id="9_eb6dy"]
@@ -74,6 +75,7 @@ splat_scene = ExtResource("7_tipki")
 
 [node name="ObstacleSpawner" type="Node2D" parent="." unique_id=1843616111]
 script = ExtResource("3_sugp2")
+pothole_scene = ExtResource("8_2f3dj")
 obstacle_scene = ExtResource("6_tefeu")
 child_scene = ExtResource("9_eb6dy")
 cyclist_scene = ExtResource("9_0ld40")
@@ -91,7 +93,6 @@ script = ExtResource("22_jscy8")
 dead_player = ExtResource("23_pm3ni")
 
 [node name="DraculaShadow" type="Sprite2D" parent="." unique_id=760046531]
-position = Vector2(0, 220)
 scale = Vector2(4, 4)
 texture = ExtResource("18_2wyq8")
 offset = Vector2(5, -8)
