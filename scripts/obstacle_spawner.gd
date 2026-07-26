@@ -33,6 +33,7 @@ var lane_positions: Array[float] = []
 var next_spawn := 0.0
 var left_bound: float
 var right_bound: float
+var pope_dir_down := false
 
 func _ready():
 	_setup_lanes()
@@ -43,12 +44,14 @@ func _on_pope_timeout():
 	var lane = randi() % lane_positions.size()
 	var lane_x = lane_positions[lane]
 	var warning = popemobile_warning.instantiate()
-	warning.position = Vector2(lane_x, WARNING_Y);
-	warning.timeout.connect(func (): _spawn_pope(lane))
+	var down = pope_dir_down
+	pope_dir_down = not pope_dir_down
+	warning.position = Vector2(lane_x, WARNING_Y * (-1 if down else 1));
+	warning.timeout.connect(func (): _spawn_pope(lane, down))
 	warning.timeout.connect(warning.queue_free)
 	warning.z_index = 50
 	add_child(warning)
-	$PopeTimer.start(randf_range(5.0, 15.0))
+	$PopeTimer.start(randf_range(5.0, 10.0))
 
 func _physics_process(delta: float) -> void:
 	next_spawn -= delta * Globals.cur_forward_speed
@@ -101,11 +104,12 @@ func _spawn_single(scene: PackedScene):
 		obstacle.on_hit.connect(on_pope_hit.emit)
 	add_child(obstacle)
 
-func _spawn_pope(lane):
+func _spawn_pope(lane: int, down: bool = false):
 	var pope = popemobile_scene.instantiate()
 	var lane_x = lane_positions[lane]
-	pope.position = Vector2(lane_x, POPE_SPAWN_Y)
+	pope.position = Vector2(lane_x, POPE_SPAWN_Y * (-1 if down else 1))
 	pope.on_hit.connect(on_pope_hit.emit)
+	pope.rotation_degrees = 180 if down else 0
 	add_child(pope)
 
 func _spawn_peloton(scene: PackedScene):

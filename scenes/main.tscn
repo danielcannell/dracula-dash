@@ -23,6 +23,8 @@
 [ext_resource type="Texture2D" uid="uid://5f11y4eqk15u" path="res://art/blooddrop.png" id="13_trceg"]
 [ext_resource type="Script" uid="uid://db3qne3trfobw" path="res://scripts/audio.gd" id="15_jkv2x"]
 [ext_resource type="AudioStream" uid="uid://d3ijff0tu3x1w" path="res://audio/main_song.wav" id="16_jbj1t"]
+[ext_resource type="Texture2D" uid="uid://bml7vsvhdgpn7" path="res://art/ambulance-shadow.png" id="18_2wyq8"]
+[ext_resource type="Script" uid="uid://dohkevhxdcgrv" path="res://scripts/dracula_shadow.gd" id="19_vxglm"]
 [ext_resource type="Script" uid="uid://bs1jp0s2tr058" path="res://scripts/dead_player_spawner.gd" id="22_jscy8"]
 [ext_resource type="PackedScene" uid="uid://bew87eilp8gaq" path="res://scenes/dead_player.tscn" id="23_pm3ni"]
 
@@ -87,6 +89,13 @@ autostart = true
 [node name="DeadPlayerSpawner" type="Node2D" parent="." unique_id=180507868]
 script = ExtResource("22_jscy8")
 dead_player = ExtResource("23_pm3ni")
+
+[node name="DraculaShadow" type="Sprite2D" parent="." unique_id=760046531]
+position = Vector2(0, 220)
+scale = Vector2(4, 4)
+texture = ExtResource("18_2wyq8")
+offset = Vector2(5, -8)
+script = ExtResource("19_vxglm")
 
 [node name="Dracula" parent="." unique_id=199222267 instance=ExtResource("1_o5qli")]
 position = Vector2(0, 220)
