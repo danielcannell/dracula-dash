@@ -1,14 +1,23 @@
 [gd_scene format=3 uid="uid://cltc60dk0p1d7"]
 
+[ext_resource type="Script" uid="uid://bgeibgn1ekgjm" path="res://scripts/road.gd" id="1_fy6l0"]
 [ext_resource type="Texture2D" uid="uid://fo3xuxjwlg7i" path="res://art/road.png" id="1_mv8x7"]
 [ext_resource type="Script" uid="uid://bx7d12epqj2wv" path="res://scripts/road_parallax.gd" id="1_my2y2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_arcuu"]
-size = Vector2(267, 622)
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_15q6v"]
+normal = Vector2(1, 0)
 
-[node name="Road" type="StaticBody2D" unique_id=1250806860]
-collision_layer = 16
-collision_mask = 0
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jjb4j"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fy6l0"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_y6deb"]
+normal = Vector2(-1, 0)
+
+[node name="Road" type="Node2D" unique_id=1875671209]
+script = ExtResource("1_fy6l0")
 
 [node name="RoadParallax" type="Parallax2D" parent="." unique_id=108040734]
 repeat_size = Vector2(0, 2560)
@@ -20,10 +29,25 @@ texture_filter = 1
 scale = Vector2(5, 5)
 texture = ExtResource("1_mv8x7")
 
-[node name="Left Collision" type="CollisionShape2D" parent="." unique_id=2044148048]
-position = Vector2(-779, -1)
-shape = SubResource("RectangleShape2D_arcuu")
+[node name="Walls" type="StaticBody2D" parent="." unique_id=28579213]
+collision_layer = 16
+collision_mask = 0
 
-[node name="Right Collision" type="CollisionShape2D" parent="." unique_id=505948494]
-position = Vector2(777, -1)
-shape = SubResource("RectangleShape2D_arcuu")
+[node name="Left Collision" type="CollisionShape2D" parent="Walls" unique_id=2044148048]
+position = Vector2(-640, 0)
+shape = SubResource("WorldBoundaryShape2D_15q6v")
+
+[node name="Right Collision" type="CollisionShape2D" parent="Walls" unique_id=778952621]
+position = Vector2(640, 0)
+shape = SubResource("WorldBoundaryShape2D_jjb4j")
+
+[node name="Grass" type="Area2D" parent="." unique_id=1208187941]
+collision_layer = 0
+
+[node name="Left edge" type="CollisionShape2D" parent="Grass" unique_id=1785361138]
+position = Vector2(-480, 0)
+shape = SubResource("WorldBoundaryShape2D_fy6l0")
+
+[node name="Right edge" type="CollisionShape2D" parent="Grass" unique_id=406990892]
+position = Vector2(480, 0)
+shape = SubResource("WorldBoundaryShape2D_y6deb")

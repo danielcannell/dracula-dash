@@ -19,7 +19,17 @@ func _ready() -> void:
 	$Dracula.hit_bloody.connect(_on_hit_bloody)
 	$Dracula.hit_powerup.connect(func (obj): obj.on_hit())
 	$ObstacleSpawner.on_pope_hit.connect(_on_pope_hit)
+	$Road.body_entered_grass.connect(_on_grass_entered)
+	$Road.body_exited_grass.connect(_on_grass_exited)
 
+
+func _on_grass_entered(node: Node2D):
+	if node == $Dracula:
+		$Dracula.on_entered_grass()
+
+func _on_grass_exited(node: Node2D):
+	if node == $Dracula:
+		$Dracula.on_exited_grass()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
