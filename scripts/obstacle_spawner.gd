@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var pothole_scene: PackedScene
 @export var obstacle_scene: PackedScene
 @export var child_scene: PackedScene
 @export var cyclist_scene: PackedScene
@@ -22,7 +23,8 @@ const WARNING_Y := 250.0
 
 @onready
 var spawn_table = [
-	[0.3, obstacle_scene],
+	[0.05, pothole_scene],
+	[0.25, obstacle_scene],
 	[0.2, child_scene],
 	[0.25, cyclist_scene],
 	[0.1, powerup_scene],
