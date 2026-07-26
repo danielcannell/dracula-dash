@@ -27,12 +27,10 @@ size_flags_horizontal = 4
 
 [node name="Start" type="Button" parent="Menu/Buttons" unique_id=1831149590]
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../Exit")
 text = "Start Game"
 
 [node name="Exit" type="Button" parent="Menu/Buttons" unique_id=580037529]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Start")
 text = "Exit"
 
 [node name="Audio" type="Node" parent="." unique_id=1965585735]

@@ -19,6 +19,12 @@ func _ready() -> void:
 	get_leaderboard()
 
 
+func on_show() -> void:
+	if Globals.gamepad_active:
+		$ColorRect/VBoxContainer/HBoxContainer/SubmitButton.grab_focus()
+	visible = true
+
+
 func set_score(new_score: int):
 	score = new_score
 	$ColorRect/VBoxContainer/HBoxContainer.visible = true
