@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b06ix0lf0wpck"]
 
-[ext_resource type="Script" uid="uid://cbfad5hq8jytq" path="res://scenes/splat.gd" id="1_5x0i3"]
+[ext_resource type="Script" uid="uid://cbfad5hq8jytq" path="res://scripts/splat.gd" id="1_5x0i3"]
 [ext_resource type="Texture2D" uid="uid://62tritqspxd" path="res://art/blood_splat.png" id="2_ydpu5"]
 
 [node name="Splat" type="Node2D" unique_id=2425604]

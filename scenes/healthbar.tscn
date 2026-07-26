@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bvmdp7pumjbuj"]
 
-[ext_resource type="Script" uid="uid://558s4pmjx1ra" path="res://scenes/healthbar.gd" id="1_8wl12"]
+[ext_resource type="Script" uid="uid://558s4pmjx1ra" path="res://scripts/healthbar.gd" id="1_8wl12"]
 [ext_resource type="Texture2D" uid="uid://bg6expm1vh220" path="res://art/health.png" id="2_vjxg4"]
 
 [node name="Healthbar" type="Control" unique_id=1354114413]
