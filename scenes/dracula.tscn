@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://s6f15w0vbsdc" path="res://art/coffin_lid.png" id="5_m0uiu"]
 [ext_resource type="AudioStream" uid="uid://8sbesukidbmk" path="res://audio/Hit1.wav" id="5_x2wbg"]
 [ext_resource type="Texture2D" uid="uid://bnmd3x8tjqsl3" path="res://art/coffin_ropes.png" id="6_iu7kl"]
+[ext_resource type="Texture2D" uid="uid://dyg0rog5ymqwv" path="res://art/immune-spritesheet-placeholder.png" id="3_x2wbg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_42sh8"]
 atlas = ExtResource("2_42sh8")
@@ -15,6 +16,18 @@ region = Rect2(0, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_x2wbg"]
 atlas = ExtResource("2_42sh8")
 region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prv0p"]
+atlas = ExtResource("3_x2wbg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcdwq"]
+atlas = ExtResource("3_x2wbg")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0uiu"]
+atlas = ExtResource("3_x2wbg")
+region = Rect2(0, 64, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jjb4j"]
 animations = [{
@@ -27,6 +40,20 @@ animations = [{
 }],
 "loop": 1,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prv0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcdwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0uiu")
+}],
+"loop": 1,
+"name": &"immune",
 "speed": 5.0
 }]
 
@@ -45,7 +72,9 @@ script = ExtResource("1_bwuyn")
 texture_filter = 1
 position = Vector2(0, 5)
 sprite_frames = SubResource("SpriteFrames_jjb4j")
+animation = &"immune"
 autoplay = "default"
+frame_progress = 0.8532651
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1269495273]
 shape = SubResource("CircleShape2D_0wfyh")

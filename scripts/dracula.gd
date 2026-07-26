@@ -20,6 +20,7 @@ signal dead
 signal blood(health: float)
 signal hit(object: StaticBody2D)
 signal hit_bloody(object: StaticBody2D)
+signal hit_powerup(object: StaticBody2D)
 signal stunned(stun: bool)
 
 const TURN_TIME_SCALE_S = 0.1
@@ -31,6 +32,7 @@ const BOUNCE_DECAY = 1000.0
 const Y_RECENTRE_SPEED = 300.0
 const HIT_DAMAGE = 10.0
 const SMALL_BOUNCE_STRENGTH = 200.0
+const IMMUNE_TIMER = 3
 
 enum State { NORMAL, STUNNED }
 
@@ -108,6 +110,7 @@ func _normal_movement(delta: float) -> void:
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
+		print("collision")
 		if collider.is_in_group("obstacles"):
 			_on_hit(collision)
 			hit.emit(collider)
@@ -119,6 +122,22 @@ func _normal_movement(delta: float) -> void:
 			hit_bloody.emit(collider)
 			_small_bounce(collision)
 			break
+		elif collider.is_in_group("powerups"):
+			hit_powerup.emit(collider)
+			_immune_on_hit()
+			break
+
+
+func _immune_on_hit():
+	$AnimatedSprite2D.play("immune")
+	collision_mask = 0
+	var timer = get_tree().create_timer(IMMUNE_TIMER)
+	timer.timeout.connect(_immune_timeout)
+
+func _immune_timeout():
+	collision_mask = 1
+	$AnimatedSprite2D.play("default")
+
 
 func _stunned_movement(delta: float) -> void:
 	velocity = bounce_velocity

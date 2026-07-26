@@ -3,6 +3,7 @@ extends Node2D
 @export var obstacle_scene: PackedScene
 @export var child_scene: PackedScene
 @export var cyclist_scene: PackedScene
+@export var powerup_scene: PackedScene
 
 @export var spawn_interval_min := 300 * 0.5
 @export var spawn_interval_max := 300 * 1.8
@@ -15,8 +16,9 @@ const SPAWN_Y := -1000.0
 @onready
 var spawn_table = [
 	[0.3, obstacle_scene],
-	[0.3, child_scene],
+	[0.2, child_scene],
 	[0.4, cyclist_scene],
+	[0.1, powerup_scene],
 ]
 
 var lane_positions: Array[float] = []

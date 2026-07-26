@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://cyo43npdhvip7" path="res://scripts/virtual_joystick.gd" id="9_choun"]
 [ext_resource type="PackedScene" uid="uid://kuhf5tfosgyp" path="res://scenes/child.tscn" id="9_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://pmefkwdb8566" path="res://scenes/cyclist.tscn" id="9_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://waq8avl54yi" path="res://scenes/powerup.tscn" id="9_jkv2x"]
 [ext_resource type="Script" uid="uid://63fqho26pc44" path="res://scripts/score.gd" id="11_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://5f11y4eqk15u" path="res://art/blooddrop.png" id="13_trceg"]
 [ext_resource type="Script" uid="uid://db3qne3trfobw" path="res://scripts/audio.gd" id="15_jkv2x"]
@@ -54,6 +55,7 @@ script = ExtResource("3_sugp2")
 obstacle_scene = ExtResource("6_tefeu")
 child_scene = ExtResource("9_eb6dy")
 cyclist_scene = ExtResource("9_jkv2x")
+powerup_scene = ExtResource("9_jkv2x")
 
 [node name="Dracula" parent="." unique_id=199222267 instance=ExtResource("1_o5qli")]
 position = Vector2(0, 100)

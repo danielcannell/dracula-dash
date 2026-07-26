@@ -17,6 +17,7 @@ func _ready() -> void:
 	Globals.cur_forward_speed = 300.0
 	$Dracula.hit.connect(_on_hit)
 	$Dracula.hit_bloody.connect(_on_hit_bloody)
+	$Dracula.hit_powerup.connect(func (obj): obj.on_hit())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
