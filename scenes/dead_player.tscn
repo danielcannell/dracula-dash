@@ -9,7 +9,9 @@ font_size = 40
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
-[node name="DeadPlayer" type="Node2D" unique_id=661465318]
+[node name="DeadPlayer" type="StaticBody2D" unique_id=1634795958]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_cmqxu")
 
 [node name="Coffin" type="Sprite2D" parent="." unique_id=812355071]
@@ -28,3 +30,6 @@ label_settings = SubResource("LabelSettings_y6deb")
 horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1290513334]
+polygon = PackedVector2Array(-50, 38, -54, 0, 20, -38, 59, -26, 59, 19)

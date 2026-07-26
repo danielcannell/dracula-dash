@@ -1,5 +1,7 @@
 extends AnimatedSprite2D
 
+
+const DECAY_TIMER = 4
 var timer = Timer.new()
 
 
@@ -13,9 +15,9 @@ func _ready() -> void:
 
 func on_step(obj):
 	frame = min(5, frame + 1)
-	timer.start(2)
+	timer.start(DECAY_TIMER)
 
 func on_timeout():
 	frame = max(0, frame - 1)
 	if frame != 0:
-		timer.start(2)
+		timer.start(DECAY_TIMER)
