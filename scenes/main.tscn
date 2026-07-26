@@ -10,9 +10,9 @@
 [ext_resource type="Script" uid="uid://cgynn8mbyg10c" path="res://scripts/splat_spawner.gd" id="6_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://b3u2bjsc67og3" path="res://scenes/obstacle.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://b06ix0lf0wpck" path="res://scenes/splat.tscn" id="7_tipki"]
+[ext_resource type="PackedScene" uid="uid://pmefkwdb8566" path="res://scenes/cyclist.tscn" id="9_0ld40"]
 [ext_resource type="Script" uid="uid://cyo43npdhvip7" path="res://scripts/virtual_joystick.gd" id="9_choun"]
 [ext_resource type="PackedScene" uid="uid://kuhf5tfosgyp" path="res://scenes/child.tscn" id="9_eb6dy"]
-[ext_resource type="PackedScene" uid="uid://pmefkwdb8566" path="res://scenes/cyclist.tscn" id="9_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://waq8avl54yi" path="res://scenes/powerup.tscn" id="9_jkv2x"]
 [ext_resource type="Script" uid="uid://63fqho26pc44" path="res://scripts/score.gd" id="11_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://5f11y4eqk15u" path="res://art/blooddrop.png" id="13_trceg"]
@@ -55,7 +55,7 @@ splat_scene = ExtResource("7_tipki")
 script = ExtResource("3_sugp2")
 obstacle_scene = ExtResource("6_tefeu")
 child_scene = ExtResource("9_eb6dy")
-cyclist_scene = ExtResource("9_jkv2x")
+cyclist_scene = ExtResource("9_0ld40")
 powerup_scene = ExtResource("9_jkv2x")
 
 [node name="Dracula" parent="." unique_id=199222267 instance=ExtResource("1_o5qli")]
