@@ -28,6 +28,7 @@ window/stretch/aspect="expand"
 
 [gui]
 
+theme/default_theme_scale=2.0
 theme/custom_font="uid://cc8rv0d8dj3o"
 
 [input]

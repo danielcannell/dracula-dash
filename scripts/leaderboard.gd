@@ -87,6 +87,7 @@ func update_leaderboard(json: Dictionary):
 		container.remove_child(entry)
 		entry.queue_free()
 
+	var count = 0
 	for row in json["scores"]:
 		var name: String = row["name"]
 		var score: int = row["score"]
@@ -99,6 +100,10 @@ func update_leaderboard(json: Dictionary):
 
 		container.add_child(name_label)
 		container.add_child(score_label)
+
+		count += 1
+		if count >= 5:
+			break
 
 	var deaths = []
 	for row in json["scores"]:
