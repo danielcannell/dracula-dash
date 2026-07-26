@@ -15,9 +15,9 @@ const SPAWN_Y := -1000.0
 
 @onready
 var spawn_table = [
-	[0.3, obstacle_scene],
+	[0.4, obstacle_scene],
 	[0.2, child_scene],
-	[0.4, cyclist_scene],
+	[0.3, cyclist_scene],
 	[0.1, powerup_scene],
 ]
 
