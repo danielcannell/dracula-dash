@@ -54,38 +54,38 @@ func get_score():
 func next_request():
 	if http_state != HTTPState.IDLE:
 		return
-		
+
 	if do_post:
 		do_post = false
 		post_score()
 		if http_state != HTTPState.IDLE:
 			return
-	
+
 	if do_get:
 		do_get = false
 		get_score()
 		if http_state != HTTPState.IDLE:
 			return
-			
+
 
 func update_leaderboard(json: Dictionary):
 	var container = $ColorRect/VBoxContainer/GridContainer
-	
+
 	# Remove all old entries
 	for entry in container.get_children():
 		container.remove_child(entry)
 		entry.queue_free()
-		
+
 	for row in json["scores"]:
 		var name: String = row["name"]
 		var score: int = row["score"]
-		
+
 		var name_label = Label.new()
 		name_label.text = name
-		
+
 		var score_label = Label.new()
 		score_label.text = str(score)
-		
+
 		container.add_child(name_label)
 		container.add_child(score_label)
 
@@ -97,13 +97,13 @@ func _on_request_completed(result: int, response_code: int, headers: PackedStrin
 			update_leaderboard(json)
 		else:
 			print("http error: get returned ", response_code)
-			
+
 	if http_state == HTTPState.POST:
 		if 200 <= response_code and response_code < 300:
 			pass
 		else:
 			print("http error: post returned ", response_code)
-	
+
 	http_state = HTTPState.IDLE
 	next_request()
 
