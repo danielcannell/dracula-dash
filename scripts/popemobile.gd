@@ -1,11 +1,16 @@
 extends CharacterBody2D
 
-const SPEED = -300.0
+const SPEED = -2000.0
 
-enum State { NORMAL, DODGE }
-
+signal on_hit(object: StaticBody2D)
 
 func _physics_process(delta: float) -> void:
-	# print(Globals.cur_forward_speed)
-	velocity = Vector2(0, SPEED + Globals.cur_forward_speed)
-	move_and_slide()
+	# Ignores player forward speed
+	velocity = Vector2(0, SPEED)
+	var hit = move_and_collide(velocity * delta)
+	if hit:
+		var obj = hit.get_collider()
+		on_hit.emit(obj)
+
+	if position.y < -1000:
+		queue_free()

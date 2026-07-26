@@ -6,6 +6,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ky4ls"]
 
 [node name="PowerupRoot" type="StaticBody2D" unique_id=1936270833]
+collision_layer = 8
+collision_mask = 0
 script = ExtResource("1_ih772")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=778478376]

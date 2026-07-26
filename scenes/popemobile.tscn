@@ -10,6 +10,7 @@
 height = 40.0
 
 [node name="Popemobile" type="CharacterBody2D" unique_id=265364882]
+collision_mask = 4
 script = ExtResource("1_oyyen")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=27185193]

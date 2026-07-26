@@ -123,7 +123,6 @@ func _normal_movement(delta: float) -> void:
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
-		print("collision")
 		if collider.is_in_group("obstacles"):
 			hit.emit(collider)
 			_on_hit(collision)

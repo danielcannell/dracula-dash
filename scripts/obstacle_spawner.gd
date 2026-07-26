@@ -11,9 +11,13 @@ extends Node2D
 @export var spawn_interval_max := 300 * 1.8
 @export var peloton_chance := 0.5
 
+signal on_pope_hit(object: StaticBody2D)
+
 const NUM_LANES := 4
 const BORDER_MARGIN := 175.0
 const SPAWN_Y := -1000.0
+const POPE_SPAWN_Y := 500.0
+const WARNING_Y := 250.0
 
 @onready
 var spawn_table = [
@@ -34,11 +38,14 @@ func _ready():
 	$PopeTimer.timeout.connect(_on_pope_timeout)
 
 func _on_pope_timeout():
-	print("Timeout")
-	var lane_x = lane_positions[randi() % lane_positions.size()]
+	var lane = randi() % lane_positions.size()
+	var lane_x = lane_positions[lane]
 	var warning = popemobile_warning.instantiate()
-	warning.position = Vector2(lane_x, 10);
+	warning.position = Vector2(lane_x, WARNING_Y);
+	warning.timeout.connect(func (): _spawn_pope(lane))
+	warning.timeout.connect(warning.queue_free)
 	add_child(warning)
+	$PopeTimer.start(randf_range(5.0, 15.0))
 
 func _physics_process(delta: float) -> void:
 	next_spawn -= delta * Globals.cur_forward_speed
@@ -89,10 +96,11 @@ func _spawn_single(scene: PackedScene):
 	obstacle.position = Vector2(lane_x, SPAWN_Y)
 	add_child(obstacle)
 
-func _spawn_pope():
+func _spawn_pope(lane):
 	var pope = popemobile_scene.instantiate()
-	var lane_x = lane_positions[randi() % lane_positions.size()]
-	pope.position = Vector2(lane_x, SPAWN_Y)
+	var lane_x = lane_positions[lane]
+	pope.position = Vector2(lane_x, POPE_SPAWN_Y)
+	pope.on_hit.connect(on_pope_hit.emit)
 	add_child(pope)
 
 func _spawn_peloton(scene: PackedScene):
