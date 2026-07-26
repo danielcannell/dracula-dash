@@ -18,9 +18,9 @@ var wheel_trails = []
 
 signal dead
 signal blood(health: float)
-signal hit(object: StaticBody2D)
-signal hit_bloody(object: StaticBody2D)
-signal hit_powerup(object: StaticBody2D)
+signal hit(object: PhysicsBody2D)
+signal hit_bloody(object: PhysicsBody2D)
+signal hit_powerup(object: PhysicsBody2D)
 signal stunned(stun: bool)
 
 const TURN_TIME_SCALE_S = 0.1
@@ -31,6 +31,7 @@ const BOUNCE_STRENGTH = 400.0
 const BOUNCE_DECAY = 1000.0
 const Y_RECENTRE_SPEED = 300.0
 const HIT_DAMAGE = 10.0
+const POPE_DAMAGE = 100.0
 const SMALL_BOUNCE_STRENGTH = 200.0
 const IMMUNE_TIMER = 3
 
@@ -145,9 +146,12 @@ func _normal_movement(delta: float) -> void:
 func _immune_on_hit():
 	$AnimatedSprite2D.play("immune_start")
 	var old_mask = collision_mask
-	collision_mask = 0
+	var old_layer = collision_layer
+	collision_mask = 16
+	collision_layer = 0
 	await get_tree().create_timer(IMMUNE_TIMER).timeout
 	collision_mask = old_mask
+	collision_layer = old_layer
 	$AnimatedSprite2D.play("immune_stop")
 
 
@@ -156,6 +160,10 @@ func _stunned_movement(delta: float) -> void:
 	move_and_slide()
 	bounce_velocity = bounce_velocity.move_toward(Vector2.ZERO, BOUNCE_DECAY * delta)
 	global_position.y = move_toward(global_position.y, 100, Y_RECENTRE_SPEED * delta)
+
+func hit_by_pope() -> void:
+	$Audio/Obstacle_Hit.play()
+	add_blood(-POPE_DAMAGE)
 
 func _on_hit(collision: KinematicCollision2D) -> void:
 	$Audio/Obstacle_Hit.play()

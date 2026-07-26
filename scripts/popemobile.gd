@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const SPEED = -2000.0
 
-signal on_hit(object: StaticBody2D)
+signal on_hit(object: PhysicsBody2D)
 
 func _physics_process(delta: float) -> void:
 	# Ignores player forward speed
