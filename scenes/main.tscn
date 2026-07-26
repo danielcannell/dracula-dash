@@ -46,6 +46,15 @@ collision_bounce = 1.0
 script = ExtResource("1_0wfyh")
 
 [node name="Background" type="CanvasLayer" parent="." unique_id=1242201165]
+layer = -100
+
+[node name="ColorRect" type="ColorRect" parent="Background" unique_id=174662905]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3882353, 0.67058825, 0.24705882, 1)
 
 [node name="Road" parent="." unique_id=1145970626 instance=ExtResource("2_0wfyh")]
 
