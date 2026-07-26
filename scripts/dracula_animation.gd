@@ -8,6 +8,8 @@ const SCALE_RATE = 0.5
 const MAX_OFFSET_FLYING = -8
 const OFFSET_SCALE_RATE = 10
 
+signal scale_changed(scale)
+
 var cur_offset = 0
 
 func _process(delta: float) -> void:
@@ -16,6 +18,7 @@ func _process(delta: float) -> void:
 			offset = Vector2.ZERO
 			cur_offset = 0
 			set_scale(Vector2(1, 1))
+			scale_changed.emit(1)
 		"immune_stop":
 			if cur_offset < 0:
 				cur_offset = min(0, cur_offset + delta*OFFSET_SCALE_RATE)
@@ -24,6 +27,7 @@ func _process(delta: float) -> void:
 			if cur_scale > 1:
 				var new_scale = max(cur_scale - delta * SCALE_RATE, 1)
 				set_scale(Vector2(new_scale, new_scale))
+				scale_changed.emit(new_scale)
 			$BloodSprite.offset = Vector2(0, cur_offset)
 			$CoffinContainer.position = Vector2(0, cur_offset + 4)
 		_:
@@ -37,6 +41,7 @@ func _process(delta: float) -> void:
 			if cur_scale < MAX_SCALE_FLYING:
 				var new_scale = min(cur_scale + delta * SCALE_RATE, MAX_SCALE_FLYING)
 				set_scale(Vector2(new_scale, new_scale))
+				scale_changed.emit(new_scale)
 
 
 func _on_animation_finished():

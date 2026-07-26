@@ -93,7 +93,6 @@ script = ExtResource("22_jscy8")
 dead_player = ExtResource("23_pm3ni")
 
 [node name="DraculaShadow" type="Sprite2D" parent="." unique_id=760046531]
-position = Vector2(0, 220)
 scale = Vector2(4, 4)
 texture = ExtResource("18_2wyq8")
 offset = Vector2(5, -8)
