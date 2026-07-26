@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://uy3vauh8sdkx" path="res://scripts/dracula.gd" id="1_bwuyn"]
 [ext_resource type="Texture2D" uid="uid://dvpb2nns634j6" path="res://art/ambulance-siren.png" id="2_42sh8"]
-[ext_resource type="Script" uid="uid://bixvsbipcb8ym" path="res://scenes/coffin.gd" id="3_42sh8"]
+[ext_resource type="Script" uid="uid://bixvsbipcb8ym" path="res://scripts/coffin.gd" id="3_42sh8"]
 [ext_resource type="Texture2D" uid="uid://d1ht124fc66r3" path="res://art/coffin_dracula.png" id="4_vcdwq"]
 [ext_resource type="Texture2D" uid="uid://s6f15w0vbsdc" path="res://art/coffin_lid.png" id="5_m0uiu"]
 [ext_resource type="AudioStream" uid="uid://8sbesukidbmk" path="res://audio/Hit1.wav" id="5_x2wbg"]
